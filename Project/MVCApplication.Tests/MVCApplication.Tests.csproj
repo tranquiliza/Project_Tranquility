@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E6811F6B-23D9-40E5-A83C-6CC4C080E9C8}</ProjectGuid>
+    <ProjectGuid>{B9342575-1325-46DE-88FC-D2CB81336A2F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MVCApplication.Tests</RootNamespace>
@@ -90,6 +90,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MVCApplication\MVCApplication.csproj">
+      <Project>{DC723F55-0210-463E-9659-812D593F9331}</Project>
+      <Name>MVCApplication</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
