@@ -1,0 +1,22 @@
+{
+  "name": "Project",
+  "version": "0.0.0",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "wwwroot",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "jquery": "3.1.1",
+    "font-awesome": "4.7.0",
+    "animate.css": "3.5.2",
+    "metismenu": "2.6.2"
+  },
+  "resolutions": {
+    "jquery": "1.9.1 - 3"
+  }
+}
