@@ -225,6 +225,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <None Include=".bin\bower.cmd" />
+    <None Include=".bin\git.cmd" />
+    <None Include=".bin\node.cmd" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <PropertyGroup>
