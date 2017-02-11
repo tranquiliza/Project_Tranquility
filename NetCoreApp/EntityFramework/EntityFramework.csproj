@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.2.0-preview1-23411" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.2.0-preview1-23411" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.2.0-preview1-23411" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.2.0-preview1-23412" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.2.0-preview1-23412" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.2.0-preview1-23412" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.2.0-preview1-*" />
