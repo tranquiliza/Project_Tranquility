@@ -56,7 +56,7 @@
       <DependentUpon>201702121921367_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Task.cs" />
+    <Compile Include="Models\MaintainanceTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
