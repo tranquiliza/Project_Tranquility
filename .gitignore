@@ -242,5 +242,5 @@ ModelManifest.xml
 .fake/
 
 # Lib Folder on ignore to ensure that the folder is only updated by bower and doesn't cause conflicts through source control
-Project/Project/wwwroot/lib
+/MVC5/MVC5/wwwroot/lib
 NetCoreApp/NetCoreApp/wwwroot/lib
