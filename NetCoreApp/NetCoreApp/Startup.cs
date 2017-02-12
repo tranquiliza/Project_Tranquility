@@ -31,7 +31,7 @@ namespace NetCoreApp
         {
             // Add framework services.
             services.AddMvc();
-            //Database Service. Not sure if this should be moved into Business layer in the future.
+            //Database Service. Not sure if this should be moved into Business layer in the future.??
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
@@ -63,7 +63,7 @@ namespace NetCoreApp
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            DbInitializer.Initialize(context);
+            //DbInitializer.Initialize(context);
         }
     }
 }

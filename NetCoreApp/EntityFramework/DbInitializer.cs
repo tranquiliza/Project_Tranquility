@@ -13,8 +13,7 @@ namespace EntityFramework
             context.Database.EnsureCreated();
             if (context.Tasks.Any())
             {
-
-                //return;
+                return;
             }
 
             var tasks = new Task[]
