@@ -50,14 +50,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationContext.cs" />
-    <Compile Include="IApplicationContext.cs" />
     <Compile Include="Migrations\201702121921367_Initial.cs" />
     <Compile Include="Migrations\201702121921367_Initial.Designer.cs">
       <DependentUpon>201702121921367_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\MaintainanceTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Helpers\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -67,6 +67,12 @@
     <EmbeddedResource Include="Migrations\201702121921367_Initial.resx">
       <DependentUpon>201702121921367_Initial.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Project_Tranquility.Core\Project_Tranquility.Core.csproj">
+      <Project>{8d66ab5f-0f6a-49d7-82de-b27baacfef3c}</Project>
+      <Name>Project_Tranquility.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

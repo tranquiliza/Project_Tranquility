@@ -1,6 +1,6 @@
 namespace Project_Tranquility.EntityFramework.Migrations
 {
-    using Models;
+    using Project_Tranquility.Core.Entities;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project_Tranquility.Core.DomainEntities
+namespace Project_Tranquility.Core.Entities
 {
     public enum Status
     {
@@ -14,9 +14,9 @@ namespace Project_Tranquility.Core.DomainEntities
         AwaitingApproval
     }
 
-    public class MaintainanceTask
+    public class MaintainanceTask : IEntity
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public Status Status { get; set; }

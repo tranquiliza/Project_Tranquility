@@ -1,0 +1,28 @@
+﻿@using Project_Tranquility.Core.Entities;
+@model IEnumerable<MaintainanceTask>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>TEST</h2>
+
+<table class="table table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(m => item.Id)</td>
+            <td>@Html.DisplayFor(m => item.Name)</td>
+            <td>@Html.DisplayFor(m => item.Description)</td>
+            <td>@Html.DisplayFor(m => item.Status)</td>
+        </tr>
+    }
+</table>
