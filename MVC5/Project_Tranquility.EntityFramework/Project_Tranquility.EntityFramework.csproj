@@ -50,9 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationContext.cs" />
-    <Compile Include="Migrations\201702121921367_Initial.cs" />
-    <Compile Include="Migrations\201702121921367_Initial.Designer.cs">
-      <DependentUpon>201702121921367_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201702172219484_Initial.cs" />
+    <Compile Include="Migrations\201702172219484_Initial.Designer.cs">
+      <DependentUpon>201702172219484_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,15 +64,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702121921367_Initial.resx">
-      <DependentUpon>201702121921367_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Project_Tranquility.Core\Project_Tranquility.Core.csproj">
       <Project>{8d66ab5f-0f6a-49d7-82de-b27baacfef3c}</Project>
       <Name>Project_Tranquility.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configurations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201702172219484_Initial.resx">
+      <DependentUpon>201702172219484_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

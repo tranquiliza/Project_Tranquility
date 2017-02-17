@@ -19,6 +19,7 @@ namespace Project_Tranquility.EntityFramework.Helpers
         public UnitOfWork(DbContext context)
         {
             _DbContext = context;
+            _DbContext.Database.Connection.Open();
         }
 
         #region .Repos.
@@ -33,7 +34,8 @@ namespace Project_Tranquility.EntityFramework.Helpers
 
         public void Commit()
         {
-            throw new NotImplementedException();
+            _DbContext.SaveChanges();
+            _DbContext.Database.Connection.Close();
         }
     }
 }

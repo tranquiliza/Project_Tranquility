@@ -22,22 +22,22 @@ namespace Project_Tranquility.Core.Services
     public class TaskService : ITaskService
     {
         private readonly IUnitOfWork _UnitOfWork;
-        private readonly IRepository<MaintainanceTask> _TaskRepository;
+        private TaskRepository _TaskRepository;
 
-        public TaskService(IUnitOfWork unitOfWork)
+        public TaskService(IUnitOfWork unitOfWork, TaskRepository taskRepository)
         {
             _UnitOfWork = unitOfWork;
-            _TaskRepository = _UnitOfWork.Tasks;
+            _TaskRepository = taskRepository;
         }
 
         public void Create(MaintainanceTask Task)
         {
-            _TaskRepository.Add(Task);
+            _TaskRepository.Create(Task);
         }
 
         public void Delete(int id)
         {
-            //Don't delete, just flag for delete possibly?
+            _TaskRepository.Delete(id);//Don't delete, just flag for delete possibly?
         }
 
         public void Delete(MaintainanceTask Task)
@@ -52,12 +52,12 @@ namespace Project_Tranquility.Core.Services
 
         public MaintainanceTask GetById(int id)
         {
-            return _TaskRepository.GetByID(id);
+            return _TaskRepository.GetById(id);
         }
 
         public void Update(MaintainanceTask Task)
         {
-            _TaskRepository.Attach(Task);
+            _TaskRepository.Update(Task);
         }
 
         public void CommitChanges()

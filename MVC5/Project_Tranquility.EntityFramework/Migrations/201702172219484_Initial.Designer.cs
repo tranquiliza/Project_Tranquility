@@ -13,7 +13,7 @@ namespace Project_Tranquility.EntityFramework.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201702121921367_Initial"; }
+            get { return "201702172219484_Initial"; }
         }
         
         string IMigrationMetadata.Source

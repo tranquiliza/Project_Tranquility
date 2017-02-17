@@ -71,7 +71,7 @@ namespace MVC5.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            string connString = "Data Source=DESKTOP-UE3MGBI;Initial Catalog=Project_Tranquility;Integrated Security=True;";
+            //string connString = "Data Source=DESKTOP-UE3MGBI;Initial Catalog=Project_Tranquility;Integrated Security=True;";
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope().WithConstructorArgument("context", f => new ApplicationContext());
 
             kernel.Bind(x => x.FromAssembliesMatching("*").SelectAllClasses().Excluding<UnitOfWork>().Excluding<ApplicationContext>().BindDefaultInterface());

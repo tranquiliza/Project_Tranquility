@@ -2,6 +2,7 @@ namespace Project_Tranquility.EntityFramework.Migrations
 {
     using Project_Tranquility.Core.Entities;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -15,15 +16,34 @@ namespace Project_Tranquility.EntityFramework.Migrations
 
         protected override void Seed(Project_Tranquility.EntityFramework.ApplicationContext context)
         {
-            var tasks = new MaintainanceTask[]
+            var department = new Department
             {
-                new MaintainanceTask { Name = "New", Description = "New Task", Status = Status.New },
-                new MaintainanceTask { Name = "In Progress", Description = "In Progress Task", Status = Status.InProgress },
-                new MaintainanceTask { Name = "Completed", Description = "Completed Task", Status = Status.Completed },
-                new MaintainanceTask { Name = "Awaiting Approval", Description = "Awaiting Approval Task", Status = Status.AwaitingApproval }
+                Name = "Development"
             };
 
-            context.Tasks.AddRange(tasks);
+            var employee = new Staff
+            {
+                Name = "Daniel Olsen",
+                Department = department
+            };
+
+            var listOfTask = new List<MaintainanceTask>();
+            for (int i = 0; i < 10; i++)
+            {
+                listOfTask.Add(new MaintainanceTask
+                {
+                    Name = "Task" + i,
+                    Description = "Test Task Number " + i,
+                    IsPriority = false,
+                    Status = Status.New,
+                    Staff = employee,
+                    Department = department,
+                    CreationDate = DateTime.Now,
+                    Price = 0,
+                    ApprovedComplete = false
+                });
+            }
+            context.Tasks.AddRange(listOfTask);
         }
     }
 }
