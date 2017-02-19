@@ -14,6 +14,6 @@ namespace Project_Tranquility.Core.DomainModels.Identity
         }
         public int Id { get; set; }
         public virtual ICollection<ApplicationUserRole> Users { get; private set; }
-        private string Name { get; set; }
+        public string Name { get; set; }
     }
 }
