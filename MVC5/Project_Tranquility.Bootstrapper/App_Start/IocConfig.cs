@@ -40,7 +40,6 @@ namespace Project_Tranquility.Bootstrapper
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-
         }
     }
 }

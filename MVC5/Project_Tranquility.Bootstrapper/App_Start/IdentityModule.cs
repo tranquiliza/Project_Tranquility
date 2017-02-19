@@ -7,6 +7,7 @@ using Project_Tranquility.Data.Identity;
 using Project_Tranquility.Data.Identity.Models;
 using System;
 using System.Data.Entity;
+using System.Web;
 
 namespace Project_Tranquility.Bootstrapper
 {
@@ -16,7 +17,7 @@ namespace Project_Tranquility.Bootstrapper
         {
             builder.RegisterType(typeof(ApplicationUserManager)).As(typeof(IApplicationUserManager)).InstancePerRequest();
             builder.RegisterType(typeof(ApplicationRoleManager)).As(typeof(IApplicationRoleManager)).InstancePerRequest();
-            builder.RegisterType(typeof(ApplicationIdentity)).As(typeof(IUser<int>)).InstancePerRequest();
+            builder.RegisterType(typeof(ApplicationIdentityUser)).As(typeof(IUser<int>)).InstancePerRequest();
 
             builder.Register(b => b.Resolve<IEntitiesContext>() as DbContext).InstancePerRequest();
             builder.Register(b =>
@@ -32,7 +33,7 @@ namespace Project_Tranquility.Bootstrapper
             }).InstancePerRequest();
 
             builder.Register(b => IdentityFactory.CreateRoleManager(b.Resolve<DbContext>())).InstancePerRequest();
-            //builder.Register(b => HttpContext.Current.GetOwinContext().Authentication).InstancePerHttpRequest();
+            builder.Register(b => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
         }
     }
 }
