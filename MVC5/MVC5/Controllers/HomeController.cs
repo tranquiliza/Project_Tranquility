@@ -12,7 +12,7 @@ namespace MVC5.Controllers
         public ActionResult Index()
         {
             var claimsIdentity = User.Identity as ClaimsIdentity;
-            ViewBag.Country = CurrentUser.Country;
+            //ViewBag.Country = CurrentUser.Country;
 
             return View();
         }

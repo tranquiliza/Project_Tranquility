@@ -12,14 +12,14 @@ namespace MVC5.App_Start
     using Ninject.Web.Common;
     using Ninject.Extensions.Conventions;
 
-    using Project_Tranquility.Core.Entities;
-    using Project_Tranquility.Core.Repositories;
-    using Project_Tranquility.Core.Helpers;
-    using Project_Tranquility.Core.Services;
+    //using Project_Tranquility.Core.Entities;
+    //using Project_Tranquility.Core.Repositories;
+    //using Project_Tranquility.Core.Helpers;
+    //using Project_Tranquility.Core.Services;
         
-    using Project_Tranquility.EntityFramework.Repositories;
-    using Project_Tranquility.EntityFramework.Helpers;
-    using Project_Tranquility.EntityFramework;
+    //using Project_Tranquility.EntityFramework.Repositories;
+    //using Project_Tranquility.EntityFramework.Helpers;
+    //using Project_Tranquility.EntityFramework;
     
     public static class NinjectWebCommon 
     {
@@ -72,9 +72,9 @@ namespace MVC5.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             //string connString = "Data Source=DESKTOP-UE3MGBI;Initial Catalog=Project_Tranquility;Integrated Security=True;";
-            kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope().WithConstructorArgument("context", f => new ApplicationContext());
+            //kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope().WithConstructorArgument("context", f => new ApplicationContext());
 
-            kernel.Bind(x => x.FromAssembliesMatching("*").SelectAllClasses().Excluding<UnitOfWork>().Excluding<ApplicationContext>().BindDefaultInterface());
+            //kernel.Bind(x => x.FromAssembliesMatching("*").SelectAllClasses().Excluding<UnitOfWork>().Excluding<ApplicationContext>().BindDefaultInterface());
         }        
     }
 }

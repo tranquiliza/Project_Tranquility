@@ -51,7 +51,7 @@ namespace Project_Tranquility.Data
             {
                 applicationUserManager.AddToRole(user.Id, role.Name);
             }
-            var context = new ApplicationContext("name=AppContext", new DebugLogger()); //Not Sure how this works.
+            var context = new ApplicationContext("Data Source=(localdb)/ProjectsV13;Initial Catalog=TestBed;Integrated Security=True;", new DebugLogger()); //Not Sure how this works.
             context.SaveChanges();
 
         }

@@ -512,10 +512,6 @@
       <Project>{8d66ab5f-0f6a-49d7-82de-b27baacfef3c}</Project>
       <Name>Project_Tranquility.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Project_Tranquility.EntityFramework\Project_Tranquility.EntityFramework.csproj">
-      <Project>{15d5f8da-f2ef-4f2c-8e83-293eecc7d614}</Project>
-      <Name>Project_Tranquility.EntityFramework</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

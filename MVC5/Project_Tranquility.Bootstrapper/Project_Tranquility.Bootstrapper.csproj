@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Project_Tranquility.Web\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -165,9 +165,17 @@
       <Project>{6abbe4fa-3964-42f8-96cc-fc4af55062c0}</Project>
       <Name>Project_Tranquility.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Project_Tranquility.Infrastructure\Project_Tranquility.Infrastructure.csproj">
+      <Project>{0C6B09FC-FA1A-4E9C-AEB6-7126172A701E}</Project>
+      <Name>Project_Tranquility.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Project_Tranquility.Services\Project_Tranquility.Services.csproj">
       <Project>{f7d197f6-7840-40a5-a3ba-56d62c905482}</Project>
       <Name>Project_Tranquility.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project_Tranquility.Web\Project_Tranquility.Web.csproj">
+      <Project>{EBE6719F-2481-4D6F-998A-7655DEF009A3}</Project>
+      <Name>Project_Tranquility.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

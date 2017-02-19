@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Autofac.Integration.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Project_Tranquility.Core.Identity;
@@ -7,14 +6,9 @@ using Project_Tranquility.Data;
 using Project_Tranquility.Data.Identity;
 using Project_Tranquility.Data.Identity.Models;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
 
-namespace Project_Tranquility.Bootstrapper.App_Start
+namespace Project_Tranquility.Bootstrapper
 {
     public class IdentityModule : Module
     {

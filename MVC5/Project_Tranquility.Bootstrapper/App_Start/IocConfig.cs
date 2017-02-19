@@ -1,29 +1,29 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Project_Tranquility.Bootstrapper;
 using Project_Tranquility.Core.Data;
 using Project_Tranquility.Core.Logging;
 using Project_Tranquility.Core.Services;
 using Project_Tranquility.Data;
+using Project_Tranquility.Infrastructure.Logging;
 using Project_Tranquility.Services;
+using Project_Tranquility.Web;
 using System.Web.Mvc;
-//using Project_Tranquility.Web;
 
-namespace Project_Tranquility.Bootstrapper.App_Start
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(IocConfig), "RegisterDependencies")]
+
+namespace Project_Tranquility.Bootstrapper
 {
     public class IocConfig
     {
         public static void RegisterDependencies()
         {
             var builder = new ContainerBuilder();
-            const string dbConnectionString = "Data Source=(localdb)/ProjectsV13;Initial Catalog=TestBed;Integrated Security=True;";
+            //AppContext
+            //Data Source=(localdb)/ProjectsV13;Initial Catalog=TestBed;Integrated Security=True;
+            const string dbConnectionString = "AppContext";
 
-            //builder.RegisterControllers(typeof(MvcApplication).Assembly); TODO
+            builder.RegisterControllers(typeof(MvcApplication).Assembly);
             builder.RegisterModule<AutofacWebTypesModule>();
             builder.RegisterGeneric(typeof(EntityRepository<>)).As(typeof(IRepository<>)).InstancePerRequest();
             builder.RegisterGeneric(typeof(Service<>)).As(typeof(IService<>)).InstancePerRequest();
@@ -35,7 +35,7 @@ namespace Project_Tranquility.Bootstrapper.App_Start
                 return context;
             }).InstancePerRequest();
 
-            //builder.Register(b => NLogLogger.Instance).SingleInstance(); TODO
+            builder.Register(b => NLogLogger.Instance).SingleInstance();
             builder.RegisterModule(new IdentityModule());
 
             var container = builder.Build();

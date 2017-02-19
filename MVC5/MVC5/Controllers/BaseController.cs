@@ -1,4 +1,4 @@
-﻿using Project_Tranquility.Core.Entities;
+﻿//using Project_Tranquility.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +10,13 @@ namespace MVC5.Controllers
 {
     public class BaseController : Controller
     {
-        public AppUserPrincipal CurrentUser
-        {
-            get
-            {
-                return new AppUserPrincipal(this.User as ClaimsPrincipal);
-            }
-        }
+        //public AppUserPrincipal CurrentUser
+        //{
+        //    get
+        //    {
+        //        return new AppUserPrincipal(this.User as ClaimsPrincipal);
+        //    }
+        //}
         public BaseController()
         {
         }

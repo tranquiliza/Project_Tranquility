@@ -7,7 +7,7 @@ using Owin;
 using Project_Tranquility.Data.Identity.Models;
 using System;
 
-namespace Project_Tranquility.Bootstrapper.App_Start
+namespace Project_Tranquility.Bootstrapper
 {
     public partial class Startup
     {

@@ -10,19 +10,19 @@ namespace MVC5.Controllers
 {
     public class MaintainanceTaskController : BaseController
     {
-        private ITaskService _TaskService;
+        //private ITaskService _TaskService;
 
-        public MaintainanceTaskController(ITaskService service)
+        public MaintainanceTaskController(/*ITaskService service*/)
         {
-            _TaskService = service;
+            //_TaskService = service;
         }
 
         // GET: MaintainanceTask
         public ActionResult Index()
         {
-            var items = _TaskService.GetAll();
+            //var items = _TaskService.GetAll();
 
-            return View(items);
+            return View(/*items*/);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Owin;
 
-namespace Project_Tranquility.Bootstrapper.App_Start
+namespace Project_Tranquility.Bootstrapper
 {
     public partial class Startup
     {
