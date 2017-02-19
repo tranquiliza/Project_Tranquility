@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Project_Tranquility.Core.Helpers;
+using Project_Tranquility.Core.Data;
 using Project_Tranquility.Core.Entities;
 
 namespace Project_Tranquility.Core.Repositories

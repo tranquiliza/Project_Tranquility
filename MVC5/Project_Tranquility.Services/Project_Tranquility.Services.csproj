@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8D66AB5F-0F6A-49D7-82DE-B27BAACFEF3C}</ProjectGuid>
+    <ProjectGuid>{F7D197F6-7840-40A5-A3BA-56D62C905482}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Project_Tranquility.Core</RootNamespace>
-    <AssemblyName>Project_Tranquility.Core</AssemblyName>
+    <RootNamespace>Project_Tranquility.Services</RootNamespace>
+    <AssemblyName>Project_Tranquility.Services</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,11 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.AspNet.Identity.Core">
-      <HintPath>..\MVC5\Bin\Microsoft.AspNet.Identity.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,32 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\OrderBy.cs" />
-    <Compile Include="DomainModels\BaseEntity.cs" />
-    <Compile Include="DomainModels\Identity\ApplicationAuthenticationDescription.cs" />
-    <Compile Include="DomainModels\Identity\ApplicationExternalLoginInfo.cs" />
-    <Compile Include="DomainModels\Identity\ApplicationIdentityResult.cs" />
-    <Compile Include="DomainModels\Identity\ApplicationMessage.cs" />
-    <Compile Include="DomainModels\Identity\ApplicationRole.cs" />
-    <Compile Include="DomainModels\Identity\ApplicationUserClaim.cs" />
-    <Compile Include="DomainModels\Identity\ApplicationUserLogin.cs" />
-    <Compile Include="DomainModels\Identity\ApplicationUserLoginInfo.cs" />
-    <Compile Include="DomainModels\Identity\ApplicationUserRole.cs" />
-    <Compile Include="DomainModels\Identity\AppUser.cs" />
-    <Compile Include="DomainModels\PaginatedList.cs" />
-    <Compile Include="Data\IUnitOfWork.cs" />
-    <Compile Include="Extensions\ListExtensions.cs" />
-    <Compile Include="Extensions\QueryableExtensions.cs" />
-    <Compile Include="Identity\IApplicationRoleManager.cs" />
-    <Compile Include="Identity\IApplicationUserManager.cs" />
-    <Compile Include="Identity\SignInStatus.cs" />
-    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Data\IRepository.cs" />
-    <Compile Include="Services\IService%271.cs" />
-    <Compile Include="Services\IService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Project_Tranquility.Core\Project_Tranquility.Core.csproj">
+      <Project>{8d66ab5f-0f6a-49d7-82de-b27baacfef3c}</Project>
+      <Name>Project_Tranquility.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
