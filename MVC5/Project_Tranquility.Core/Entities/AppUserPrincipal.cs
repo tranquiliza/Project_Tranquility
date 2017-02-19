@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Project_Tranquility.Core.Entities
 {
-    public class AppUser : ClaimsPrincipal
+    public class AppUserPrincipal : ClaimsPrincipal
     {
-        public AppUser(ClaimsPrincipal principal) : base (principal)
+        public AppUserPrincipal(ClaimsPrincipal principal) : base (principal)
         {
         }
 
@@ -17,7 +17,7 @@ namespace Project_Tranquility.Core.Entities
         {
             get
             {
-                return this.FindFirst(ClaimTypes.Name).Value;
+                return FindFirst(ClaimTypes.Name).Value;
             }
         }
 
@@ -25,7 +25,7 @@ namespace Project_Tranquility.Core.Entities
         {
             get
             {
-                return this.FindFirst(ClaimTypes.Country).Value;
+                return FindFirst(ClaimTypes.Country).Value;
             }
         }
     }

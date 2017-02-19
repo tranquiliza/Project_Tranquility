@@ -1,4 +1,5 @@
-﻿using Project_Tranquility.Core.Entities;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Project_Tranquility.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -20,6 +21,7 @@ namespace Project_Tranquility.EntityFramework
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Configurations.AddFromAssembly(typeof(EntityFramework.))
 
             //modelBuilder.Configurations.Add(new EntityConfiguration());
         }

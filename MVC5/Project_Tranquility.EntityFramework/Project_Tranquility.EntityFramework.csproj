@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationContext.cs" />
-    <Compile Include="Identity\ApplicationUser.cs" />
+    <Compile Include="Configurations\ApplicationUserConfiguration.cs" />
     <Compile Include="Migrations\201702172219484_Initial.cs" />
     <Compile Include="Migrations\201702172219484_Initial.Designer.cs">
       <DependentUpon>201702172219484_Initial.cs</DependentUpon>
@@ -78,9 +78,7 @@
       <Name>Project_Tranquility.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Configurations\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201702172219484_Initial.resx">
       <DependentUpon>201702172219484_Initial.cs</DependentUpon>

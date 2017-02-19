@@ -10,11 +10,11 @@ namespace MVC5.Controllers
 {
     public class BaseController : Controller
     {
-        public AppUser CurrentUser
+        public AppUserPrincipal CurrentUser
         {
             get
             {
-                return new AppUser(this.User as ClaimsPrincipal);
+                return new AppUserPrincipal(this.User as ClaimsPrincipal);
             }
         }
         public BaseController()
