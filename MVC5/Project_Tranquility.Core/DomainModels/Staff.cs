@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Project_Tranquility.Core.DomainModels
 {
-    public abstract class BaseEntity
+    public class Staff : BaseEntity
     {
-        public virtual int Id { get; set; }
+        public virtual string Name { get; set; }
+        public virtual Department Department { get; set; }
     }
 }

@@ -37,7 +37,8 @@ namespace Project_Tranquility.Bootstrapper
 
             builder.Register(b => NLogLogger.Instance).SingleInstance();
             builder.RegisterModule(new IdentityModule());
-
+            //This continues to throw an exception trying to load an earlier version than what is installed.
+            // how to fix?
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }

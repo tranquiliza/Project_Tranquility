@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Data\OrderBy.cs" />
     <Compile Include="DomainModels\BaseEntity.cs" />
+    <Compile Include="DomainModels\Department.cs" />
     <Compile Include="DomainModels\Identity\ApplicationAuthenticationDescription.cs" />
     <Compile Include="DomainModels\Identity\ApplicationExternalLoginInfo.cs" />
     <Compile Include="DomainModels\Identity\ApplicationIdentityResult.cs" />
@@ -53,8 +54,10 @@
     <Compile Include="DomainModels\Identity\ApplicationUserLoginInfo.cs" />
     <Compile Include="DomainModels\Identity\ApplicationUserRole.cs" />
     <Compile Include="DomainModels\Identity\AppUser.cs" />
+    <Compile Include="DomainModels\MaintainanceTask.cs" />
     <Compile Include="DomainModels\PaginatedList.cs" />
     <Compile Include="Data\IUnitOfWork.cs" />
+    <Compile Include="DomainModels\Staff.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\QueryableExtensions.cs" />
     <Compile Include="Identity\IApplicationRoleManager.cs" />
