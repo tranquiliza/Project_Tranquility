@@ -10,6 +10,7 @@ using Project_Tranquility.Core.DomainModels;
 using Project_Tranquility.Core.Logging;
 using Project_Tranquility.Data.Identity;
 using Project_Tranquility.Data.Identity.Models;
+using System.Data.Entity.Infrastructure;
 
 namespace Project_Tranquility.Data
 {
@@ -24,8 +25,8 @@ namespace Project_Tranquility.Data
         public void InitializeIdentityForEF(ApplicationContext db)
         {
             // This is only for testing purpose
-            const string name = "admin";
-            const string password = "12345";
+            const string name = "admin@admin.com";
+            const string password = "Admin@123456";
             const string roleName = "Admin";
             var applicationRoleManager = IdentityFactory.CreateRoleManager(db);
             var applicationUserManager = IdentityFactory.CreateUserManager(db);
@@ -45,16 +46,24 @@ namespace Project_Tranquility.Data
                 applicationUserManager.Create(user, password);
                 applicationUserManager.SetLockoutEnabled(user.Id, false);
             }
+
             // Add user admin to Role Admin if not already added
             var rolesForUser = applicationUserManager.GetRoles(user.Id);
             if (!rolesForUser.Contains(role.Name))
             {
                 applicationUserManager.AddToRole(user.Id, role.Name);
             }
-            var context = new ApplicationContext("Data Source=(localdb)/ProjectsV13;Initial Catalog=TestBed;Integrated Security=True;", new DebugLogger()); //Not Sure how this works.
+            var context = new ApplicationContext("name=AppContext", new DebugLogger());
+            //var image = new Image { Path = "http://lorempixel.com/400/200/" };
+            //context.Set<Image>().Add(image);
+            //for (var i = 0; i < 100; i++)
+            //{
+            //    context.Set<Product>().Add(new Product { Name = "My Product", Description = "My Product", Image = image });
+            //}
             context.SaveChanges();
 
         }
+
         class DebugLogger : ILogger
         {
             public void Log(Exception ex)

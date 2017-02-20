@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
-using Project_Tranquility.Bootstrapper;
 using Project_Tranquility.Core.Data;
 using Project_Tranquility.Core.Logging;
 using Project_Tranquility.Core.Services;
@@ -10,9 +9,8 @@ using Project_Tranquility.Services;
 using Project_Tranquility.Web;
 using System.Web.Mvc;
 
-//[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(IocConfig), "RegisterDependencies")]
-
-namespace Project_Tranquility.Bootstrapper
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(IocConfig), "RegisterDependencies")]
+namespace Project_Tranquility.Web
 {
     public class IocConfig
     {
@@ -21,7 +19,7 @@ namespace Project_Tranquility.Bootstrapper
             var builder = new ContainerBuilder();
             //AppContext
             //Data Source=(localdb)/ProjectsV13;Initial Catalog=TestBed;Integrated Security=True;
-            const string dbConnectionString = "AppContext";
+            const string dbConnectionString = "name=AppContext";
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             builder.RegisterModule<AutofacWebTypesModule>();
