@@ -54,12 +54,6 @@ namespace Project_Tranquility.Data
                 applicationUserManager.AddToRole(user.Id, role.Name);
             }
             var context = new ApplicationContext("name=AppContext", new DebugLogger());
-            //var image = new Image { Path = "http://lorempixel.com/400/200/" };
-            //context.Set<Image>().Add(image);
-            //for (var i = 0; i < 100; i++)
-            //{
-            //    context.Set<Product>().Add(new Product { Name = "My Product", Description = "My Product", Image = image });
-            //}
             context.SaveChanges();
 
         }
