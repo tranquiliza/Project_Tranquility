@@ -244,3 +244,4 @@ ModelManifest.xml
 # Lib Folder on ignore to ensure that the folder is only updated by bower and doesn't cause conflicts through source control
 /MVC5/MVC5/wwwroot/lib
 NetCoreApp/NetCoreApp/wwwroot/lib
+MVC5/Project_Tranquility.Web/wwwroot/lib
