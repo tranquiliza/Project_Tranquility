@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Project_Tranquility.Core.DomainModels;
 
 namespace Project_Tranquility.Data
 {
@@ -13,6 +14,19 @@ namespace Project_Tranquility.Data
     {
         public static void ConfigureEf(DbModelBuilder modelBuilder)
         {
+            //Taskmanager Entities
+            modelBuilder.Entity<MaintainanceTask>()
+                .Property(e => e.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            modelBuilder.Entity<Department>()
+                .Property(e => e.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            modelBuilder.Entity<Staff>()
+                .Property(e => e.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
 
             //Identity Entities
             modelBuilder.Entity<ApplicationIdentityUser>()

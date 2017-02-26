@@ -19,7 +19,37 @@ namespace Project_Tranquility.Data
         protected override void Seed(ApplicationContext context)
         {
             InitializeIdentityForEF(context);
+            InitializeTaskManagerForEF(context);
             base.Seed(context);
+        }
+
+        public void InitializeTaskManagerForEF(ApplicationContext db)
+        {
+            var Department = new Department();
+            Department.Name = "Development";
+
+            var Staff = new Staff();
+            Staff.Name = "Daniel Olsen";
+            Staff.Department = Department;
+
+
+            var Task = new MaintainanceTask();
+            Task.Name = "Test Task";
+            Task.Description = "Test Task Description";
+            Task.Status = Status.New;
+            Task.Price = 0;
+            Task.IsPriority = false;
+            Task.CreationDate = DateTime.Now;
+            Task.ApprovedComplete = false;
+
+            Task.Department = Department;
+            Task.Staff = Staff;
+
+            var context = new ApplicationContext("name=AppContext", new DebugLogger());
+            db.Set<Department>().Add(Department);
+            db.Set<Staff>().Add(Staff);
+            db.Set<MaintainanceTask>().Add(Task);
+            db.SaveChanges();
         }
 
         public void InitializeIdentityForEF(ApplicationContext db)
@@ -53,8 +83,9 @@ namespace Project_Tranquility.Data
             {
                 applicationUserManager.AddToRole(user.Id, role.Name);
             }
-            var context = new ApplicationContext("name=AppContext", new DebugLogger());
-            context.SaveChanges();
+            //var context = new ApplicationContext("name=AppContext", new DebugLogger());
+            //context.SaveChanges();
+            db.SaveChanges();
 
         }
 
