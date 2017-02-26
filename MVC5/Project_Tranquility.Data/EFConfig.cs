@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Project_Tranquility.Core.DomainModels;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Project_Tranquility.Data
 {
@@ -14,6 +15,9 @@ namespace Project_Tranquility.Data
     {
         public static void ConfigureEf(DbModelBuilder modelBuilder)
         {
+            //Conventions
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
             //Taskmanager Entities
             modelBuilder.Entity<MaintainanceTask>()
                 .Property(e => e.Id)

@@ -41,8 +41,9 @@ namespace Project_Tranquility.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+
             EFConfig.ConfigureEf(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
 
         public new IDbSet<TEntity> Set<TEntity>() where TEntity : BaseEntity
