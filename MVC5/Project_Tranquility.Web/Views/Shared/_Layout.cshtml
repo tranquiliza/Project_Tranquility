@@ -3,30 +3,32 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/wwwroot/css")
     @RenderSection("styles", required: false)
 </head>
 
 <body>
     <div id="wrapper">
-        @*Navigation*@
         @Html.Partial("_Navigation");
+        @*Navigation*@
+        @*@Html.Partial("_SideNavigation")*@
 
         @*Content*@
-        <div class="container body-content">
-
+        <div id="page-wrapper">
             @RenderBody()
-            <hr />
-
             @*Footer*@
             @Html.Partial("_Footer");
         </div>
 
     </div>
 
+    @section scripts{
+
+    }
 
     @Scripts.Render("~/wwwroot/js")
     @RenderSection("scripts", required: false)
+    
 </body>
 </html>
