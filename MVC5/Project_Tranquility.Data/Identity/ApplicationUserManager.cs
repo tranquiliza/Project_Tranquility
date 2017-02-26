@@ -23,6 +23,7 @@ namespace Project_Tranquility.Data.Identity
         {
             _userManager = userManager;
             _authenticationManager = authenticationManager;
+
         }
 
         public virtual string ApplicationCookie

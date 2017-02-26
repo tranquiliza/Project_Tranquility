@@ -8,7 +8,8 @@ namespace Project_Tranquility.Data.Identity
     {
         public Task SendAsync(IdentityMessage message)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(0);
+            //throw new NotImplementedException();
         }
     }
 }
