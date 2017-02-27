@@ -1,0 +1,57 @@
+﻿@model Project_Tranquility.Web.Models.TaskViewModel
+
+@{
+    ViewBag.Title = "ProjectManager";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Index</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Staff Name</th>
+                    <th>Depart Name</th>
+                    <th>Creation Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var task in Model.Tasks)
+                {
+                    <tr>
+                        <td>@task.Id</td>
+                        <td>@task.Name</td>
+                        <td>@task.Description</td>
+                        @if (task.Staff != null)
+                        {
+                            <td>@task.Staff.Name</td>
+                        }
+                        else
+                        {
+                            <td>No Staff (PH)</td>
+                        }
+                        @if (task.Department != null)
+                        {
+                            <td>@task.Department.Name</td>
+                        }
+                        else
+                        {
+                            <td>No Department</td>
+                        }
+                        <td>@task.CreationDate</td>
+                        <td>@task.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

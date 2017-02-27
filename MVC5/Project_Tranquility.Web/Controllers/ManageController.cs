@@ -6,10 +6,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace ASPNETIdentityWithOnion.Web.Controllers
+namespace Project_Tranquility.Web.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         private IApplicationUserManager _userManager;
         public ManageController(IApplicationUserManager userManager)

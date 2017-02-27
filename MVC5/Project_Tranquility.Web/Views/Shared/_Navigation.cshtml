@@ -19,8 +19,12 @@
                 <li>
                     <a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
+                <li>
+                    <a href="@Url.Action("Index", "ProjectManager")"><i class="fa fa-tasks"></i> Project Manager</a>
+                </li>
+                @*Authentication required!*@
                 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-            {
+                {
                     <li>
                         <a href="#"><i class="fa fa-cog"></i> Admin <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -36,6 +40,5 @@
             </ul>
         </div>
     </div>
-
 
 </nav>

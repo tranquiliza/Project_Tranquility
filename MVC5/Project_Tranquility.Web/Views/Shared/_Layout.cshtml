@@ -10,17 +10,14 @@
 
 <body>
     <div id="wrapper">
-        @Html.Partial("_Navigation");
-        @*Navigation*@
+        @Html.Partial("_Navigation")
         @*@Html.Partial("_SideNavigation")*@
-
+        
         @*Content*@
         <div id="page-wrapper">
             @RenderBody()
-            @*Footer*@
-            @Html.Partial("_Footer");
         </div>
-
+        @Html.Partial("_Footer")
     </div>
 
     @section scripts{

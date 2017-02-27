@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Project_Tranquility.Core.Data 
 {
-    public interface IRepository<TEntity> where TEntity : BaseEntity
+    public interface IRepository<TEntity> : IDisposable where TEntity : BaseEntity
     {
         List<TEntity> GetAll();
         PaginatedList<TEntity> GetAll(int pageIndex, int pageSize);

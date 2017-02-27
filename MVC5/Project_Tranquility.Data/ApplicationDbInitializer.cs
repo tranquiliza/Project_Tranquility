@@ -33,22 +33,43 @@ namespace Project_Tranquility.Data
             Staff.Department = Department;
 
 
-            var Task = new MaintainanceTask();
-            Task.Name = "Test Task";
-            Task.Description = "Test Task Description";
-            Task.Status = Status.New;
-            Task.Price = 0;
-            Task.IsPriority = false;
-            Task.CreationDate = DateTime.Now;
-            Task.ApprovedComplete = false;
+            var amountOfTasks = 100;
 
-            Task.Department = Department;
-            Task.Staff = Staff;
+            var listOfTasks = new List<MaintainanceTask>();
+
+            for (int i = 0; i < amountOfTasks; i++)
+            {
+                listOfTasks.Add(new MaintainanceTask("Task" + i, "Description", 0, false, null, null));
+            }
+            var newTask = new MaintainanceTask("New Task", "Desc", 0, false, null, null);
+            newTask.Status = Status.New;
+
+            var inProgressTask = new MaintainanceTask("InProgress Task", "Desc", 0, false, null, null);
+            inProgressTask.Status = Status.InProgress;
+
+            var completedTask = new MaintainanceTask("Completed Task", "Desc", 0, false, null, null);
+            completedTask.Status = Status.Completed;
+
+            var awaitingApprovalTask = new MaintainanceTask("Awaiting Approval Task", "Desc", 0, false, null, null);
+            awaitingApprovalTask.Status = Status.AwaitingApproval;
 
             var context = new ApplicationContext("name=AppContext", new DebugLogger());
             db.Set<Department>().Add(Department);
             db.Set<Staff>().Add(Staff);
-            db.Set<MaintainanceTask>().Add(Task);
+
+
+            db.Set<MaintainanceTask>().Add(newTask);
+            db.Set<MaintainanceTask>().Add(inProgressTask);
+            db.Set<MaintainanceTask>().Add(completedTask);
+            db.Set<MaintainanceTask>().Add(awaitingApprovalTask);
+
+
+            for (int i = 0; i < listOfTasks.Count; i++)
+            {
+                db.Set<MaintainanceTask>().Add(listOfTasks[i]);
+            }
+
+
             db.SaveChanges();
         }
 

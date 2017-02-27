@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Project_Tranquility.Core.Identity;
 
-namespace ASPNETIdentityWithOnion.Web.Controllers
+namespace Project_Tranquility.Web.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class UsersAdminController : Controller
+    public class UsersAdminController : BaseController
     {
         private IApplicationUserManager _userManager;
         private IApplicationRoleManager _roleManager;

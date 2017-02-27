@@ -5,10 +5,10 @@ using System.Web.Mvc;
 using Project_Tranquility.Core.Identity;
 using Project_Tranquility.Core.DomainModels.Identity;
 
-namespace ASPNETIdentityWithOnion.Web.Controllers
+namespace Project_Tranquility.Web.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private IApplicationUserManager _userManager;
         public AccountController(IApplicationUserManager userManager)

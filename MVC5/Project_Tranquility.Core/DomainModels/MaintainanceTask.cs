@@ -39,5 +39,22 @@ namespace Project_Tranquility.Core.DomainModels
         [DataType(DataType.DateTime)]
         public virtual DateTime? ApprovedDate { get; set; }
         public virtual bool ApprovedComplete { get; set; }
+
+        //Constructor for EF?
+        private MaintainanceTask()
+        {
+        }
+        public MaintainanceTask(string name, string description, decimal price, bool isPriority = false, Staff staff = null, Department department = null)
+        {
+            Name = name;
+            Description = description;
+            Price = price;
+            IsPriority = IsPriority;
+
+            //set creationDate
+            CreationDate = DateTime.Now;
+            //set status to default?
+            Status = Status.AwaitingApproval;
+        }
     }
 }

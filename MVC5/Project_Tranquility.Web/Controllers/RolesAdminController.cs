@@ -7,10 +7,10 @@ using System.Collections.Generic;
 using Project_Tranquility.Core.Identity;
 using Project_Tranquility.Core.DomainModels.Identity;
 
-namespace ASPNETIdentityWithOnion.Web.Controllers
+namespace Project_Tranquility.Web.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class RolesAdminController : Controller
+    public class RolesAdminController : BaseController
     {
         private IApplicationUserManager _userManager;
         private IApplicationRoleManager _roleManager;
