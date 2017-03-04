@@ -34,6 +34,7 @@ namespace Project_Tranquility.Core.DomainModels
         public virtual DateTime? CompletionDate { get; private set; }
         public virtual DateTime? ApprovedDate { get; private set; }
         public virtual bool ApprovedComplete { get; private set; }
+        public virtual int? UserId { get; private set; }
         #endregion
 
         //Constructor for EF?
@@ -41,7 +42,7 @@ namespace Project_Tranquility.Core.DomainModels
         {
         }
 
-        public MaintainanceTask(string name, string description, decimal price, bool isPriority = false, Staff staff = null, Department department = null)
+        public MaintainanceTask(string name, string description, decimal price, bool isPriority = false, Staff staff = null, Department department = null, int? userId = null)
         {
             Name = name;
             Description = description;
@@ -53,6 +54,7 @@ namespace Project_Tranquility.Core.DomainModels
             Status = Status.AwaitingApproval;
             Staff = staff;
             Department = department;
+            UserId = userId;
         }
 
         public void SetStatus(Status newStatus)

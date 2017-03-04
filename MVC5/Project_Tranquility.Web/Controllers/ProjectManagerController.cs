@@ -26,6 +26,7 @@ namespace Project_Tranquility.Web.Controllers
         public ActionResult Index(int pageIndex = 1)
         {
             ViewBag.pageIndex = pageIndex;
+
             //IF user is the Developer
             if (User.IsInRole("Developer"))
             {
@@ -35,8 +36,9 @@ namespace Project_Tranquility.Web.Controllers
                 };
                 return View(modelWithAll);
             }
+
             //If user is a departmentLeader
-            if (User.IsInRole("Developer"))
+            if (User.IsInRole("Department Leader"))
             {
                 var departmentId = User.Identity.GetDepartmentId();
                 var departmentModel = new TaskViewModel()
@@ -45,12 +47,23 @@ namespace Project_Tranquility.Web.Controllers
                 };
                 return View(departmentModel);
             }
-            
 
-            var userStaffId = User.Identity.GetStaffId();
+            //If user is employee
+            if (User.IsInRole("Employee"))
+            {
+                var staffId = User.Identity.GetStaffId();
+                var staffModel = new TaskViewModel()
+                {
+                    Tasks = _Service.GetAll(pageIndex, _PageSize, m => m.Id, m => m.Staff.Id == staffId, Core.Data.OrderBy.Ascending, m => m.Staff, m => m.Department)
+                };
+                return View(staffModel);
+            }
+
+            //If user is not attached anything.
+            var userId = User.Identity.GetUserId();
             var model = new TaskViewModel()
             {
-                Tasks = _Service.GetAll(pageIndex, _PageSize, m => m.Id, m => m.Staff.Id == userStaffId, Core.Data.OrderBy.Ascending, includeProperties: m => m.Staff)
+                Tasks = _Service.GetAll(pageIndex, _PageSize, m => m.Id, m => m.UserId == userId, Core.Data.OrderBy.Ascending, m => m.Staff, m => m.Department)
             };
             return View(model);
         }

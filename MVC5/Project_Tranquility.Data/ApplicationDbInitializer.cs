@@ -25,6 +25,8 @@ namespace Project_Tranquility.Data
 
         public void InitializeTaskManagerForEF(ApplicationContext db)
         {
+            var userManager = IdentityFactory.CreateUserManager(db);
+
             var Department = new Department
             {
                 Name = "Development"
@@ -41,9 +43,9 @@ namespace Project_Tranquility.Data
             for (int i = 0; i < amountOfTasks; i++)
             {
 
-                listOfTasks.Add(new MaintainanceTask("Task" + i, "Description", 0, false, null, null));
+                listOfTasks.Add(new MaintainanceTask("Task" + i, "Description", 0, false));
             }
-            var newTask = new MaintainanceTask("New Task", "Desc", 0, false, Staff, null);
+            var newTask = new MaintainanceTask("New Task", "Desc", 0, false, Staff);
             newTask.SetStatus(Status.New);
 
             var inProgressTask = new MaintainanceTask("InProgress Task", "Desc", 0, false, null, Department);
@@ -52,7 +54,7 @@ namespace Project_Tranquility.Data
             var completedTask = new MaintainanceTask("Completed Task", "Desc", 0, false, null, Department);
             completedTask.SetStatus(Status.Completed);
 
-            var awaitingApprovalTask = new MaintainanceTask("Awaiting Approval Task", "Desc", 0, false, null, Department);
+            var awaitingApprovalTask = new MaintainanceTask("Awaiting Approval Task", "Desc", 55.2m, false, null, null, 1);
             awaitingApprovalTask.SetStatus(Status.AwaitingApproval);
 
             var context = new ApplicationContext("name=AppContext", new DebugLogger());
@@ -70,6 +72,9 @@ namespace Project_Tranquility.Data
             {
                 db.Set<MaintainanceTask>().Add(listOfTasks[i]);
             }
+            
+
+
             db.SaveChanges();
         }
 

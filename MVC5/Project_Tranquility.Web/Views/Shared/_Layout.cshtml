@@ -4,28 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/wwwroot/css")
+    @Styles.Render("~/bundle/css")
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     @RenderSection("styles", required: false)
 </head>
 
 <body>
-    <div id="wrapper">
+    <main>
         @Html.Partial("_Navigation")
-        @*@Html.Partial("_SideNavigation")*@
-        
-        @*Content*@
-        <div id="page-wrapper">
+        <div class="container">
             @RenderBody()
         </div>
-        @Html.Partial("_Footer")
-    </div>
+    </main>
+    @Html.Partial("_Footer")
 
-    @section scripts{
-
-    }
-
-    @Scripts.Render("~/wwwroot/js")
+    @Scripts.Render("~/bundle/js")
     @RenderSection("scripts", required: false)
-    
+    <script>
+        $('#sideMenu').sideNav();
+    </script>
 </body>
 </html>
