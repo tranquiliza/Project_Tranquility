@@ -35,5 +35,27 @@ namespace Project_Tranquility.Web.Extensions
             var claimsIdentity = identity as ClaimsIdentity;
             return claimsIdentity == null ? null : claimsIdentity.FindFirstValue("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name");
         }
+
+        public static int GetStaffId(this IIdentity identity)
+        {
+            if (identity == null)
+            {
+                throw new ArgumentNullException("identity");
+            }
+            var claimsIdentity = identity as ClaimsIdentity;
+            var staffId = claimsIdentity.FindFirstValue("StaffId");
+            return staffId == null ? -1 : int.Parse(staffId);
+        }
+
+        public static int GetDepartmentId(this IIdentity identity)
+        {
+            if (identity == null)
+            {
+                throw new ArgumentNullException("indentity");
+            }
+            var claimsIdentity = identity as ClaimsIdentity;
+            var departmentId = claimsIdentity.FindFirstValue("DepartmentId");
+            return departmentId == null ? -1 : int.Parse(departmentId);
+        }
     }
 }

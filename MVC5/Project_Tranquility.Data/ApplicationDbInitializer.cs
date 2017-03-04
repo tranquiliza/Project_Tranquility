@@ -45,13 +45,13 @@ namespace Project_Tranquility.Data
             var newTask = new MaintainanceTask("New Task", "Desc", 0, false, Staff, null);
             newTask.SetStatus(Status.New);
 
-            var inProgressTask = new MaintainanceTask("InProgress Task", "Desc", 0, false, null, null);
+            var inProgressTask = new MaintainanceTask("InProgress Task", "Desc", 0, false, null, Department);
             inProgressTask.SetStatus(Status.InProgress);
 
-            var completedTask = new MaintainanceTask("Completed Task", "Desc", 0, false, null, null);
+            var completedTask = new MaintainanceTask("Completed Task", "Desc", 0, false, null, Department);
             completedTask.SetStatus(Status.Completed);
 
-            var awaitingApprovalTask = new MaintainanceTask("Awaiting Approval Task", "Desc", 0, false, null, null);
+            var awaitingApprovalTask = new MaintainanceTask("Awaiting Approval Task", "Desc", 0, false, null, Department);
             awaitingApprovalTask.SetStatus(Status.AwaitingApproval);
 
             var context = new ApplicationContext("name=AppContext", new DebugLogger());
