@@ -23,7 +23,7 @@ namespace Project_Tranquility.Web.Controllers
 
             var model = new TaskViewModel
             {
-                Tasks = _Service.GetAll()
+                Tasks = _Service.GetAll(1, 25, m => m.Id, m => m.Staff.Id == 1, Core.Data.OrderBy.Ascending, includeProperties: m => m.Staff)
             };
 
             return View(model);

@@ -14,7 +14,7 @@ using System.Data.Entity.Infrastructure;
 
 namespace Project_Tranquility.Data
 {
-    public class ApplicationDbInitializer : DropCreateDatabaseAlways<ApplicationContext>
+    public class ApplicationDbInitializer : DropCreateDatabaseIfModelChanges<ApplicationContext> //DropCreateDatabaseAlways<ApplicationContext>
     {
         protected override void Seed(ApplicationContext context)
         {
@@ -25,33 +25,34 @@ namespace Project_Tranquility.Data
 
         public void InitializeTaskManagerForEF(ApplicationContext db)
         {
-            var Department = new Department();
-            Department.Name = "Development";
+            var Department = new Department
+            {
+                Name = "Development"
+            };
 
-            var Staff = new Staff();
-            Staff.Name = "Daniel Olsen";
-            Staff.Department = Department;
-
+            var Staff = new Staff
+            {
+                Name = "Daniel Olsen",
+                Department = Department
+            };
 
             var amountOfTasks = 100;
-
             var listOfTasks = new List<MaintainanceTask>();
-
             for (int i = 0; i < amountOfTasks; i++)
             {
                 listOfTasks.Add(new MaintainanceTask("Task" + i, "Description", 0, false, null, null));
             }
-            var newTask = new MaintainanceTask("New Task", "Desc", 0, false, null, null);
-            newTask.Status = Status.New;
+            var newTask = new MaintainanceTask("New Task", "Desc", 0, false, Staff, null);
+            newTask.SetStatus(Status.New);
 
             var inProgressTask = new MaintainanceTask("InProgress Task", "Desc", 0, false, null, null);
-            inProgressTask.Status = Status.InProgress;
+            inProgressTask.SetStatus(Status.InProgress);
 
             var completedTask = new MaintainanceTask("Completed Task", "Desc", 0, false, null, null);
-            completedTask.Status = Status.Completed;
+            completedTask.SetStatus(Status.Completed);
 
             var awaitingApprovalTask = new MaintainanceTask("Awaiting Approval Task", "Desc", 0, false, null, null);
-            awaitingApprovalTask.Status = Status.AwaitingApproval;
+            awaitingApprovalTask.SetStatus(Status.AwaitingApproval);
 
             var context = new ApplicationContext("name=AppContext", new DebugLogger());
             db.Set<Department>().Add(Department);
@@ -68,8 +69,6 @@ namespace Project_Tranquility.Data
             {
                 db.Set<MaintainanceTask>().Add(listOfTasks[i]);
             }
-
-
             db.SaveChanges();
         }
 
