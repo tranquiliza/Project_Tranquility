@@ -40,6 +40,7 @@ namespace Project_Tranquility.Data
             var listOfTasks = new List<MaintainanceTask>();
             for (int i = 0; i < amountOfTasks; i++)
             {
+
                 listOfTasks.Add(new MaintainanceTask("Task" + i, "Description", 0, false, null, null));
             }
             var newTask = new MaintainanceTask("New Task", "Desc", 0, false, Staff, null);
@@ -75,9 +76,9 @@ namespace Project_Tranquility.Data
         public void InitializeIdentityForEF(ApplicationContext db)
         {
             // This is only for testing purpose
-            const string name = "admin@admin.com";
-            const string password = "Admin@123456";
-            const string roleName = "Admin";
+            string name = "admin@admin.com";
+            string password = "Admin123";
+            string roleName = "Developer";
             var applicationRoleManager = IdentityFactory.CreateRoleManager(db);
             var applicationUserManager = IdentityFactory.CreateUserManager(db);
 
@@ -103,8 +104,6 @@ namespace Project_Tranquility.Data
             {
                 applicationUserManager.AddToRole(user.Id, role.Name);
             }
-            //var context = new ApplicationContext("name=AppContext", new DebugLogger());
-            //context.SaveChanges();
             db.SaveChanges();
 
         }

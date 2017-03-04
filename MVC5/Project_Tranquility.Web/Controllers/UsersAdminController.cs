@@ -8,7 +8,7 @@ using Project_Tranquility.Core.Identity;
 
 namespace Project_Tranquility.Web.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Developer")]
     public class UsersAdminController : BaseController
     {
         private IApplicationUserManager _userManager;

@@ -8,6 +8,6 @@ namespace Project_Tranquility.Web.Models
 {
     public class TaskViewModel
     {
-        public List<MaintainanceTask> Tasks { get; set; }
+        public PaginatedList<MaintainanceTask> Tasks { get; set; }
     }
 }

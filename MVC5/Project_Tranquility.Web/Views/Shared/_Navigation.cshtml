@@ -23,7 +23,7 @@
                     <a href="@Url.Action("Index", "ProjectManager")"><i class="fa fa-tasks"></i> Project Manager</a>
                 </li>
                 @*Authentication required!*@
-                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                @if (Request.IsAuthenticated && User.IsInRole("Developer"))
                 {
                     <li>
                         <a href="#"><i class="fa fa-cog"></i> Admin <span class="fa arrow"></span></a>
