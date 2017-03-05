@@ -1,44 +1,44 @@
 ﻿@model IEnumerable<Project_Tranquility.Core.DomainModels.Identity.AppUser>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Users";
 }
-
-<div class="row">
-    <div class="col-md-12">
-        <h2>Index</h2>
-
-        <p>
-            @Html.ActionLink("Create New", "Create")
-        </p>
+<div class="section">
+    <div class="row">
+        <div class="col s12">
+            <h4>@ViewBag.Title</h4>
+            <div class="row">
+                <div class="col s12">
+                    <a class="btn waves-effect" href="@Url.Action("Create", "UsersAdmin")">Create New</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <table class="table bordered striped">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(m => m.Email)</th>
+                                <th>@Html.DisplayNameFor(m => m.UserName)</th>
+                                <th></th> @*Empty for edit column.*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(m => item.Email)</td>
+                                    <td>@Html.DisplayFor(m => item.UserName)</td>
+                                    <td class="right">
+                                        <a href="@Url.Action("Edit", "UsersAdmin", new { id = item.Id })" class="btn btn-floating"><i class="small material-icons">mode_edit</i></a>
+                                        <a href="@Url.Action("Delete", "UsersAdmin", new { id = item.Id })" class="btn btn-floating red"><i class="small material-icons">delete</i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12">
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.UserName)
-                </th>
-                <th>
 
-                </th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UserName)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>
-                </tr>
-            }
-
-        </table>
-    </div>
-</div>

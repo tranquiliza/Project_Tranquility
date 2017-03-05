@@ -1,4 +1,4 @@
-﻿@model Project_Tranquility.Web.Models.LoginViewModel
+﻿@model Project_Tranquility.Web.Models.AccountViewModels.LoginViewModel
 
 @{
     ViewBag.Title = "Log in";
@@ -41,7 +41,7 @@
         }
         <div class="col s6">
             <div class="row">
-                @Html.Partial("_ExternalLoginsListPartial", new Project_Tranquility.Web.Models.ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl, LoginProviders = ViewBag.LoginProviders })
+                @Html.Partial("_ExternalLoginsListPartial", new Project_Tranquility.Web.Models.AccountViewModels.ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl, LoginProviders = ViewBag.LoginProviders })
             </div>
         </div>
         <div class="col s12">
