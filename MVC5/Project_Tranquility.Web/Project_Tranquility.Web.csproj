@@ -226,11 +226,15 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="wwwroot\css\site.css" />
+    <Content Include="wwwroot\images\AfventerGodk.png" />
+    <Content Include="wwwroot\images\Færdig.png" />
+    <Content Include="wwwroot\images\Igang.png" />
     <Content Include="wwwroot\images\patterns\diamond_upholstery.png" />
     <Content Include="wwwroot\images\patterns\diamond_upholstery_%402X.png" />
     <Content Include="wwwroot\images\patterns\footer_lodyas.png" />
     <Content Include="wwwroot\images\patterns\gplaypattern.png" />
     <Content Include="wwwroot\images\patterns\gplaypattern_%402X.png" />
+    <Content Include="wwwroot\images\Stanby.png" />
     <Content Include="wwwroot\images\Tcoin2.png" />
     <Content Include="wwwroot\lib\jquery\AUTHORS.txt" />
     <Content Include="wwwroot\lib\jquery\dist\core.js" />

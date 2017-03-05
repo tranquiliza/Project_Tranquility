@@ -8,7 +8,7 @@
 
 <div class="row">
     <div class="col s12">
-        <table class="table bordered">
+        <table class="table striped bordered">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -17,10 +17,10 @@
                     <th>Staff Name</th>
                     <th>Depart Name</th>
                     <th>Creation Date</th>
-                    <th>N</th>
-                    <th>I</th>
-                    <th>C</th>
-                    <th>A</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -50,28 +50,28 @@
                         @switch (task.Status)
                         {
                             case Project_Tranquility.Core.DomainModels.Status.New:
-                                <td style="background-color:blue;">x</td>
+                                <td style="background-color:blue;"></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 break;
                             case Project_Tranquility.Core.DomainModels.Status.InProgress:
                                 <td></td>
-                                <td style="background-color:yellow;">x</td>
+                                <td style="background-color:yellow;"></td>
                                 <td></td>
                                 <td></td>
                                 break;
                             case Project_Tranquility.Core.DomainModels.Status.Completed:
                                 <td></td>
                                 <td></td>
-                                <td style="background-color:green;">x</td>
+                                <td style="background-color:green;"></td>
                                 <td></td>
                                 break;
                             case Project_Tranquility.Core.DomainModels.Status.AwaitingApproval:
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td style="background-color:red;">x</td>
+                                <td style="background-color:red;"></td>
                                 break;
                             default:
                                 <td></td>
