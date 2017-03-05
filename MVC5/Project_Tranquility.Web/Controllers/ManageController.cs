@@ -1,6 +1,6 @@
 ﻿using Project_Tranquility.Core.DomainModels.Identity;
 using Project_Tranquility.Core.Identity;
-using Project_Tranquility.Web.Models;
+using Project_Tranquility.Web.Models.ManageViewModels;
 using Project_Tranquility.Web.Extensions;
 using System.Linq;
 using System.Threading.Tasks;

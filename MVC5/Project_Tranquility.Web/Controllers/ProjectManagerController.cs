@@ -32,7 +32,7 @@ namespace Project_Tranquility.Web.Controllers
             {
                 var modelWithAll = new IndexViewModel()
                 {
-                    Tasks = _Service.GetAll(pageIndex, _PageSize)
+                    Tasks = _Service.GetAll(pageIndex, _PageSize, m => (int)m.Status)
                 };
                 return View(modelWithAll);
             }
@@ -43,7 +43,7 @@ namespace Project_Tranquility.Web.Controllers
                 var departmentId = User.Identity.GetDepartmentId();
                 var departmentModel = new IndexViewModel()
                 {
-                    Tasks = _Service.GetAll(pageIndex, _PageSize, m => m.Id, m => m.Department.Id == departmentId, Core.Data.OrderBy.Ascending, m => m.Staff, m => m.Department)
+                    Tasks = _Service.GetAll(pageIndex, _PageSize, m => (int)m.Status, m => m.Department.Id == departmentId, Core.Data.OrderBy.Ascending, m => m.Staff, m => m.Department)
                 };
                 return View(departmentModel);
             }
@@ -54,7 +54,7 @@ namespace Project_Tranquility.Web.Controllers
                 var staffId = User.Identity.GetStaffId();
                 var staffModel = new IndexViewModel()
                 {
-                    Tasks = _Service.GetAll(pageIndex, _PageSize, m => m.Id, m => m.Staff.Id == staffId, Core.Data.OrderBy.Ascending, m => m.Staff, m => m.Department)
+                    Tasks = _Service.GetAll(pageIndex, _PageSize, m => (int)m.Status, m => m.Staff.Id == staffId, Core.Data.OrderBy.Ascending, m => m.Staff, m => m.Department)
                 };
                 return View(staffModel);
             }
@@ -63,7 +63,7 @@ namespace Project_Tranquility.Web.Controllers
             var userId = User.Identity.GetUserId();
             var model = new IndexViewModel()
             {
-                Tasks = _Service.GetAll(pageIndex, _PageSize, m => m.Id, m => m.UserId == userId, Core.Data.OrderBy.Ascending, m => m.Staff, m => m.Department)
+                Tasks = _Service.GetAll(pageIndex, _PageSize, m => (int)m.Status, m => m.UserId == userId, Core.Data.OrderBy.Ascending, m => m.Staff, m => m.Department)
             };
             return View(model);
         }
