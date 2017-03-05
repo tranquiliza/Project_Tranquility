@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Project_Tranquility.Core.DomainModels;
 using Project_Tranquility.Core.Services;
-using Project_Tranquility.Web.Models;
+using Project_Tranquility.Web.Models.ProjectManagerViewModels;
 using System.Security.Claims;
 using Project_Tranquility.Web.Extensions;
 
@@ -30,7 +30,7 @@ namespace Project_Tranquility.Web.Controllers
             //IF user is the Developer
             if (User.IsInRole("Developer"))
             {
-                var modelWithAll = new TaskViewModel()
+                var modelWithAll = new IndexViewModel()
                 {
                     Tasks = _Service.GetAll(pageIndex, _PageSize)
                 };
@@ -41,7 +41,7 @@ namespace Project_Tranquility.Web.Controllers
             if (User.IsInRole("Department Leader"))
             {
                 var departmentId = User.Identity.GetDepartmentId();
-                var departmentModel = new TaskViewModel()
+                var departmentModel = new IndexViewModel()
                 {
                     Tasks = _Service.GetAll(pageIndex, _PageSize, m => m.Id, m => m.Department.Id == departmentId, Core.Data.OrderBy.Ascending, m => m.Staff, m => m.Department)
                 };
@@ -52,7 +52,7 @@ namespace Project_Tranquility.Web.Controllers
             if (User.IsInRole("Employee"))
             {
                 var staffId = User.Identity.GetStaffId();
-                var staffModel = new TaskViewModel()
+                var staffModel = new IndexViewModel()
                 {
                     Tasks = _Service.GetAll(pageIndex, _PageSize, m => m.Id, m => m.Staff.Id == staffId, Core.Data.OrderBy.Ascending, m => m.Staff, m => m.Department)
                 };
@@ -61,7 +61,7 @@ namespace Project_Tranquility.Web.Controllers
 
             //If user is not attached anything.
             var userId = User.Identity.GetUserId();
-            var model = new TaskViewModel()
+            var model = new IndexViewModel()
             {
                 Tasks = _Service.GetAll(pageIndex, _PageSize, m => m.Id, m => m.UserId == userId, Core.Data.OrderBy.Ascending, m => m.Staff, m => m.Department)
             };

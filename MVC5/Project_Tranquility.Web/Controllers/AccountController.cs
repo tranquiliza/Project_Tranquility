@@ -51,7 +51,7 @@ namespace Project_Tranquility.Web.Controllers
                 case SignInStatus.RequiresTwoFactorAuthentication:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl });
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     return View(model);
             }
         }

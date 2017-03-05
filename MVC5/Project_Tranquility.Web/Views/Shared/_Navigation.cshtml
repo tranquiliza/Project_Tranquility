@@ -3,7 +3,7 @@
     <ul id="loginDropdown" class="dropdown-content">
         @if (Request.IsAuthenticated)
         {
-            <li><a href="@Url.Action("Index", "Manage")"><i class="fa fa-user fa-fw"></i>User Profile</a></li>
+            <li><a href="@Url.Action("Index", "Manage")">User Profile</a></li>
             <li>
                 @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "" }))
                 {
@@ -24,14 +24,20 @@
     </ul>
 
     <div class="nav-wrapper container">
-        <a id="logo-container" href="@Url.Action("Index", "Home")" class="brand-logo">Project Tranquility</a>
-        <ul class="right hide-on-med-and-down">
+        <a style="margin-left:80px;" id="logo-container" href="@Url.Action("Index", "Home")" class="brand-logo">Project Tranquility</a>
+        <ul class="left hide-on-med-and-down">
             <li><a id="sideMenu" data-activates="slide-out"><i class="material-icons">menu</i></a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            @*<li><a href="@Url.Action("Index", "ProjectManager")">Project Manager</a></li>*@
             @if (Request.IsAuthenticated)
             {
                 <li>Logged in as @User.Identity.Name</li>
             }
-            <li><a class="dropdown-button" href="#" data-activates="loginDropdown">Login<i class="material-icons right">perm_identity</i></a></li>
+            else
+            {
+                <li><a class="dropdown-button" href="#" data-activates="loginDropdown">Login<i class="material-icons right">perm_identity</i></a></li>
+            }
         </ul>
     </div>
 </nav>
@@ -42,14 +48,31 @@
             <div class="background">
                 <img src="~/wwwroot/images/patterns/footer_lodyas.png">
             </div>
-            <a href="#!user"><img class="circle" src="~/wwwroot/images/Tcoin2.png"></a>
-            <a href="#!name"><span class="white-text name">John Doe</span></a>
-            <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+            <a href="#"><img class="circle" src="~/wwwroot/images/Tcoin2.png"></a>
+            @if (Request.IsAuthenticated)
+            {
+                <a href="#"><span class="white-text name">@User.Identity.Name</span></a>
+                <a class="dropdown-button" href="#" data-activates="loginDropdown"><span class="white-text email">Account</span></a>
+            }
+            else
+            {
+                <br />
+            }
         </div>
     </li>
-    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-    <li><a href="#!">Second Link</a></li>
-    <li><div class="divider"></div></li>
-    <li><a class="subheader">Subheader</a></li>
-    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+    @*<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>*@
+    @*<li><a class="waves-effect" href="@Url.Action("Index", "ProjectManager")">Project Manager</a></li>*@
+    <li><a class="waves-effect" href="@Url.Action("Index", "ProjectManager")">Project Manager</a></li>
+    @if (Request.IsAuthenticated && User.IsInRole("Developer") || User.IsInRole("Admin"))
+    {
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">Admin Functions</a></li>
+        <li><a class="waves-effect" href="@Url.Action("Index", "UsersAdmin")" >Users</a></li>
+    }
+    @if (Request.IsAuthenticated && User.IsInRole("Developer"))
+    {
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">Developer Functions</a></li>
+        <li><a class="waves-effect" href="@Url.Action("Index", "RolesAdmin")">Roles</a></li>
+    }
 </ul>

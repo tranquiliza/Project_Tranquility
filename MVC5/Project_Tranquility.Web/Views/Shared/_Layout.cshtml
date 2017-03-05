@@ -22,6 +22,9 @@
     @RenderSection("scripts", required: false)
     <script>
         $('#sideMenu').sideNav();
+        $(":checkbox").each(function () {
+            $(this).nextAll("label").before($(this))
+        })
     </script>
 </body>
 </html>

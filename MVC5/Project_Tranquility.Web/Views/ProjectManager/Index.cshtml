@@ -1,4 +1,4 @@
-﻿@model Project_Tranquility.Web.Models.TaskViewModel
+﻿@model Project_Tranquility.Web.Models.ProjectManagerViewModels.IndexViewModel
 
 @{
     ViewBag.Title = "ProjectManager";
@@ -7,13 +7,8 @@
 
 
 <div class="row">
-    <div class="col-md-12">
-        <h2>Index</h2>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <table class="table table-bordered">
+    <div class="col s12">
+        <table class="table bordered">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -22,7 +17,10 @@
                     <th>Staff Name</th>
                     <th>Depart Name</th>
                     <th>Creation Date</th>
-                    <th>Status</th>
+                    <th>N</th>
+                    <th>I</th>
+                    <th>C</th>
+                    <th>A</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,7 +47,39 @@
                             <td></td>
                         }
                         <td>@task.CreationDate</td>
-                        <td>@task.Status</td>
+                        @switch (task.Status)
+                        {
+                            case Project_Tranquility.Core.DomainModels.Status.New:
+                                <td style="background-color:blue;">x</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                break;
+                            case Project_Tranquility.Core.DomainModels.Status.InProgress:
+                                <td></td>
+                                <td style="background-color:yellow;">x</td>
+                                <td></td>
+                                <td></td>
+                                break;
+                            case Project_Tranquility.Core.DomainModels.Status.Completed:
+                                <td></td>
+                                <td></td>
+                                <td style="background-color:green;">x</td>
+                                <td></td>
+                                break;
+                            case Project_Tranquility.Core.DomainModels.Status.AwaitingApproval:
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td style="background-color:red;">x</td>
+                                break;
+                            default:
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                break;
+                        }
                     </tr>
                 }
             </tbody>
@@ -57,12 +87,16 @@
 
         @if (Model.Tasks.Count > 0)
         {
-            <ul class="pagination pull-right">
+            <ul class="pagination right">
                 @if (Model.Tasks.HasPreviousPage)
                 {
-                    <li><a href="@Url.Action("Index", "ProjectManager", new { pageIndex = pageIndex - 1 })">Previous</a></li>
+                    <li><a href="@Url.Action("Index", "ProjectManager", new { pageIndex = pageIndex - 1 })"><i class="material-icons">chevron_left</i></a></li>
                 }
-                @for (int i = 1; i < Model.Tasks.TotalPageCount; i++)
+                else
+                {
+                    <li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>
+                }
+                @for (int i = 1; i < Model.Tasks.TotalPageCount + 1; i++)
                 {
                     if (i == pageIndex)
                     {
@@ -76,7 +110,11 @@
 
                 @if (Model.Tasks.HasNextPage)
                 {
-                    <li><a href="@Url.Action("Index", "ProjectManager", new { pageIndex = pageIndex + 1 })">Next</a></li>
+                    <li><a href="@Url.Action("Index", "ProjectManager", new { pageIndex = pageIndex + 1 })"><i class="material-icons">chevron_right</i></a></li>
+                }
+                else
+                {
+                    <li class="disabled"><a><i class="material-icons">chevron_right</i></a></li>
                 }
             </ul>
         }
