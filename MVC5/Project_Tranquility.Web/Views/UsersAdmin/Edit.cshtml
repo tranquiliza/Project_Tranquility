@@ -1,52 +1,55 @@
-﻿@model Project_Tranquility.Web.Models.EditUserViewModel
+﻿@model Project_Tranquility.Web.Models.AdminViewModels.EditUserViewModel
 
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit.</h2>
 
+<div class="section">
+    <h4>@ViewBag.Title</h4>
+    <div class="row">
+        <div class="col s12">
+            @using (Html.BeginForm("Edit", "UsersAdmin", FormMethod.Post, new { @class = "col s6" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.Id)
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>Edit User Form.</h4>
-        <hr />
-        @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Email)
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.Label("Roles", new { @class = "control-label col-md-2" })
-            <span class=" col-md-10">
-                @foreach (var item in Model.RolesList)
-                {
-                    <input type="checkbox" name="SelectedRole" value="@item.Value" checked="@item.Selected" class="checkbox-inline" />
-                    @Html.Label(item.Value, new { @class = "control-label" })
-                }
-            </span>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+                <form class="col s6">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            @Html.EditorFor(m => m.Email, new { @class = "Validate" })
+                            @Html.LabelFor(m => m.Email)
+                        </div>
+                    </div>
+                    @Html.Label("Roles")
+                    <div class="row">
+                        <div class="input-field col s12">
+                            @foreach (var item in Model.RolesList)
+                            {
+                                <input id="@item.Value" type="checkbox" name="SelectedRole" value="@item.Value" checked="@item.Selected" />
+                                <label for="@item.Value">@item.Value</label>
+                                <br />
+                            }
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </div>
+                    </div>
+                </form>
+            }
         </div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    <div class="row">
+        <div class="col s12">
+            <a href="@Url.Action("Index", "UsersAdmin")" class="btn red">Back to List</a>
+        </div>
+    </div>
 </div>
 
+
 @section Scripts {
-    @*@Scripts.Render("~/bundles/jqueryval")*@
 }
