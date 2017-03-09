@@ -9,7 +9,7 @@ using Project_Tranquility.Services;
 using Project_Tranquility.Web;
 using System.Web.Mvc;
 
-//[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(IocConfig), "RegisterDependencies")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(IocConfig), "RegisterDependencies")]
 namespace Project_Tranquility.Web
 {
     public class IocConfig
