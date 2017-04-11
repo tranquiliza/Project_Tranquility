@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project_Tranquility.Core.DomainModels
+namespace Project_Tranquility.Core.Data
 {
     public class PaginatedList<T> : List<T>
     {

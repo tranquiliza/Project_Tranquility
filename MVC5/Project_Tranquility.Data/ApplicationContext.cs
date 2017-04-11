@@ -39,6 +39,10 @@ namespace Project_Tranquility.Data
             }
         }
 
+        public ApplicationContext() : base ("name=AppContext")
+        {
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 

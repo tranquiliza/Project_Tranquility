@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Project_Tranquility.Core.DomainModels;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using Project_Tranquility.Core.DomainModels.Webshop;
 
 namespace Project_Tranquility.Data
 {
@@ -18,20 +19,27 @@ namespace Project_Tranquility.Data
             //Conventions
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            //Taskmanager Entities
-            modelBuilder.Entity<MaintainanceTask>()
+            //Webshop Entities
+            modelBuilder.Entity<Category>()
                 .Property(e => e.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            modelBuilder.Entity<Department>()
+            modelBuilder.Entity<Inquiry>()
                 .Property(e => e.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            modelBuilder.Entity<Staff>()
+            modelBuilder.Entity<Manufacturer>()
                 .Property(e => e.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
+            modelBuilder.Entity<Product>()
+                .Property(e => e.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
+            modelBuilder.Entity<Subcategory>()
+                .Property(e => e.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            
             //Identity Entities
             modelBuilder.Entity<ApplicationIdentityUser>()
                 .Property(e => e.Id)
