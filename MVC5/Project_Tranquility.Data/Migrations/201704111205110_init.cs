@@ -80,6 +80,7 @@ namespace Project_Tranquility.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -88,6 +89,7 @@ namespace Project_Tranquility.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
                         Category_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -99,7 +101,14 @@ namespace Project_Tranquility.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        ProductNumber = c.String(),
                         Model = c.String(),
+                        NumberInStock = c.Int(nullable: false),
+                        LocationInWareHouse = c.String(),
+                        PurchasePrice = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        SellPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        VAT = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Weight = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Subcategory_Id = c.Int(),
                         Inquiry_Id = c.Int(),
                     })
@@ -108,6 +117,18 @@ namespace Project_Tranquility.Data.Migrations
                 .ForeignKey("dbo.Inquiry", t => t.Inquiry_Id)
                 .Index(t => t.Subcategory_Id)
                 .Index(t => t.Inquiry_Id);
+            
+            CreateTable(
+                "dbo.Color",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Product_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Product", t => t.Product_Id)
+                .Index(t => t.Product_Id);
             
             CreateTable(
                 "dbo.Inquiry",
@@ -122,6 +143,7 @@ namespace Project_Tranquility.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -132,10 +154,12 @@ namespace Project_Tranquility.Data.Migrations
             DropForeignKey("dbo.Product", "Inquiry_Id", "dbo.Inquiry");
             DropForeignKey("dbo.Subcategory", "Category_Id", "dbo.Category");
             DropForeignKey("dbo.Product", "Subcategory_Id", "dbo.Subcategory");
+            DropForeignKey("dbo.Color", "Product_Id", "dbo.Product");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropIndex("dbo.Color", new[] { "Product_Id" });
             DropIndex("dbo.Product", new[] { "Inquiry_Id" });
             DropIndex("dbo.Product", new[] { "Subcategory_Id" });
             DropIndex("dbo.Subcategory", new[] { "Category_Id" });
@@ -147,6 +171,7 @@ namespace Project_Tranquility.Data.Migrations
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropTable("dbo.Manufacturer");
             DropTable("dbo.Inquiry");
+            DropTable("dbo.Color");
             DropTable("dbo.Product");
             DropTable("dbo.Subcategory");
             DropTable("dbo.Category");

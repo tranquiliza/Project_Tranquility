@@ -8,6 +8,7 @@ namespace Project_Tranquility.Core.DomainModels.Webshop
 {
     public class Category : BaseEntity
     {
-        public ICollection<Subcategory> SubCategories { get; set; }
+        public virtual string Name { get; private set; }
+        public virtual ICollection<Subcategory> SubCategories { get; set; }
     }
 }

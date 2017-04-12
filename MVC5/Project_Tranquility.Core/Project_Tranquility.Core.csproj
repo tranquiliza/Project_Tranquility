@@ -56,6 +56,7 @@
     <Compile Include="Data\PaginatedList.cs" />
     <Compile Include="Data\IUnitOfWork.cs" />
     <Compile Include="DomainModels\Webshop\Category.cs" />
+    <Compile Include="DomainModels\Webshop\Color.cs" />
     <Compile Include="DomainModels\Webshop\Inquiry.cs" />
     <Compile Include="DomainModels\Webshop\Product.cs" />
     <Compile Include="DomainModels\Webshop\Subcategory.cs" />

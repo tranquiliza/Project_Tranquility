@@ -8,6 +8,6 @@ namespace Project_Tranquility.Core.DomainModels.Webshop
 {
     public class Inquiry : BaseEntity
     {
-        public ICollection<Product> Products { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

@@ -8,6 +8,6 @@ namespace Project_Tranquility.Core.DomainModels.Webshop
 {
     public class Manufacturer : BaseEntity
     {
-
+        public virtual string Name { get; private set; }
     }
 }
