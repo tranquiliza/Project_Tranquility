@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Project_Tranquility.Core.DomainModels.Webshop;
 
 namespace Project_Tranquility.Core.DomainModels.Identity
 {
@@ -29,5 +30,6 @@ namespace Project_Tranquility.Core.DomainModels.Identity
         public virtual string SecurityStamp { get; set; }
         public virtual bool TwoFactorEnabled { get; set; }
         public virtual string UserName { get; set; }
+        public virtual Customer CustomerInfo { get; set; }
     }
 }

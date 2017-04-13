@@ -46,9 +46,12 @@ namespace Project_Tranquility.Data.Migrations
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
                         UserName = c.String(nullable: false, maxLength: 256),
+                        CustomerInfo_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .Index(t => t.UserName, unique: true, name: "UserNameIndex");
+                .ForeignKey("dbo.Customer", t => t.CustomerInfo_Id)
+                .Index(t => t.UserName, unique: true, name: "UserNameIndex")
+                .Index(t => t.CustomerInfo_Id);
             
             CreateTable(
                 "dbo.AspNetUserClaims",
@@ -62,6 +65,14 @@ namespace Project_Tranquility.Data.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
+            
+            CreateTable(
+                "dbo.Customer",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetUserLogins",
@@ -101,6 +112,8 @@ namespace Project_Tranquility.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Description = c.String(),
                         ProductNumber = c.String(),
                         Model = c.String(),
                         NumberInStock = c.Int(nullable: false),
@@ -120,6 +133,18 @@ namespace Project_Tranquility.Data.Migrations
             
             CreateTable(
                 "dbo.Color",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Product_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Product", t => t.Product_Id)
+                .Index(t => t.Product_Id);
+            
+            CreateTable(
+                "dbo.Material",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -154,28 +179,34 @@ namespace Project_Tranquility.Data.Migrations
             DropForeignKey("dbo.Product", "Inquiry_Id", "dbo.Inquiry");
             DropForeignKey("dbo.Subcategory", "Category_Id", "dbo.Category");
             DropForeignKey("dbo.Product", "Subcategory_Id", "dbo.Subcategory");
+            DropForeignKey("dbo.Material", "Product_Id", "dbo.Product");
             DropForeignKey("dbo.Color", "Product_Id", "dbo.Product");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUsers", "CustomerInfo_Id", "dbo.Customer");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropIndex("dbo.Material", new[] { "Product_Id" });
             DropIndex("dbo.Color", new[] { "Product_Id" });
             DropIndex("dbo.Product", new[] { "Inquiry_Id" });
             DropIndex("dbo.Product", new[] { "Subcategory_Id" });
             DropIndex("dbo.Subcategory", new[] { "Category_Id" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
+            DropIndex("dbo.AspNetUsers", new[] { "CustomerInfo_Id" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropTable("dbo.Manufacturer");
             DropTable("dbo.Inquiry");
+            DropTable("dbo.Material");
             DropTable("dbo.Color");
             DropTable("dbo.Product");
             DropTable("dbo.Subcategory");
             DropTable("dbo.Category");
             DropTable("dbo.AspNetUserLogins");
+            DropTable("dbo.Customer");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
