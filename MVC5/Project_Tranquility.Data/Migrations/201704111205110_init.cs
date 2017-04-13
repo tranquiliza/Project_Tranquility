@@ -71,6 +71,14 @@ namespace Project_Tranquility.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        FirstName = c.String(),
+                        SurName = c.String(),
+                        PhoneNumber = c.String(),
+                        Email = c.String(),
+                        ZIP = c.Int(nullable: false),
+                        StreetName = c.String(),
+                        StreetNumber = c.Int(nullable: false),
+                        Country = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -123,13 +131,10 @@ namespace Project_Tranquility.Data.Migrations
                         VAT = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Weight = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Subcategory_Id = c.Int(),
-                        Inquiry_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Subcategory", t => t.Subcategory_Id)
-                .ForeignKey("dbo.Inquiry", t => t.Inquiry_Id)
-                .Index(t => t.Subcategory_Id)
-                .Index(t => t.Inquiry_Id);
+                .Index(t => t.Subcategory_Id);
             
             CreateTable(
                 "dbo.Color",
@@ -160,8 +165,27 @@ namespace Project_Tranquility.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        PurchaseDate = c.DateTimeOffset(nullable: false, precision: 7),
+                        Customer_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Customer", t => t.Customer_Id)
+                .Index(t => t.Customer_Id);
+            
+            CreateTable(
+                "dbo.InquiryProductLine",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Amount = c.Int(nullable: false),
+                        Product_Id = c.Int(),
+                        Inquiry_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Product", t => t.Product_Id)
+                .ForeignKey("dbo.Inquiry", t => t.Inquiry_Id)
+                .Index(t => t.Product_Id)
+                .Index(t => t.Inquiry_Id);
             
             CreateTable(
                 "dbo.Manufacturer",
@@ -176,7 +200,9 @@ namespace Project_Tranquility.Data.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Product", "Inquiry_Id", "dbo.Inquiry");
+            DropForeignKey("dbo.InquiryProductLine", "Inquiry_Id", "dbo.Inquiry");
+            DropForeignKey("dbo.InquiryProductLine", "Product_Id", "dbo.Product");
+            DropForeignKey("dbo.Inquiry", "Customer_Id", "dbo.Customer");
             DropForeignKey("dbo.Subcategory", "Category_Id", "dbo.Category");
             DropForeignKey("dbo.Product", "Subcategory_Id", "dbo.Subcategory");
             DropForeignKey("dbo.Material", "Product_Id", "dbo.Product");
@@ -186,9 +212,11 @@ namespace Project_Tranquility.Data.Migrations
             DropForeignKey("dbo.AspNetUsers", "CustomerInfo_Id", "dbo.Customer");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropIndex("dbo.InquiryProductLine", new[] { "Inquiry_Id" });
+            DropIndex("dbo.InquiryProductLine", new[] { "Product_Id" });
+            DropIndex("dbo.Inquiry", new[] { "Customer_Id" });
             DropIndex("dbo.Material", new[] { "Product_Id" });
             DropIndex("dbo.Color", new[] { "Product_Id" });
-            DropIndex("dbo.Product", new[] { "Inquiry_Id" });
             DropIndex("dbo.Product", new[] { "Subcategory_Id" });
             DropIndex("dbo.Subcategory", new[] { "Category_Id" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
@@ -199,6 +227,7 @@ namespace Project_Tranquility.Data.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropTable("dbo.Manufacturer");
+            DropTable("dbo.InquiryProductLine");
             DropTable("dbo.Inquiry");
             DropTable("dbo.Material");
             DropTable("dbo.Color");
