@@ -63,16 +63,20 @@
     @*<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>*@
     @*<li><a class="waves-effect" href="@Url.Action("Index", "ProjectManager")">Project Manager</a></li>*@
     <li><a class="waves-effect" href="@Url.Action("Index", "ProjectManager")">Project Manager</a></li>
-    @if (Request.IsAuthenticated && User.IsInRole("Developer") || User.IsInRole("Admin"))
+    @if (Request.IsAuthenticated)
     {
-        <li><div class="divider"></div></li>
-        <li><a class="subheader">Admin Functions</a></li>
-        <li><a class="waves-effect" href="@Url.Action("Index", "UsersAdmin")" >Users</a></li>
-    }
-    @if (Request.IsAuthenticated && User.IsInRole("Developer"))
-    {
-        <li><div class="divider"></div></li>
-        <li><a class="subheader">Developer Functions</a></li>
-        <li><a class="waves-effect" href="@Url.Action("Index", "RolesAdmin")">Roles</a></li>
+        if (User.IsInRole("Developer") || User.IsInRole("Admin"))
+        {
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Admin Functions</a></li>
+            <li><a class="waves-effect" href="@Url.Action("Index", "UsersAdmin")">Users</a></li>
+        }
+
+        if (User.IsInRole("Developer"))
+        {
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Developer Functions</a></li>
+            <li><a class="waves-effect" href="@Url.Action("Index", "RolesAdmin")">Roles</a></li>
+        }
     }
 </ul>
