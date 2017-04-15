@@ -8,7 +8,7 @@ namespace Project_Tranquility.Core.DomainModels.Webshop
 {
     public class Inquiry : BaseEntity
     {
-        public virtual ICollection<InquiryProductLine> Products { get; set; }
+        public virtual ICollection<InquiryProductLine> InquiryLines { get; set; }
         public virtual DateTimeOffset PurchaseDate { get; set; }
         public virtual Customer Customer { get; set; }
 
@@ -17,14 +17,24 @@ namespace Project_Tranquility.Core.DomainModels.Webshop
         public Inquiry(Customer customer)
         {
             PurchaseDate = DateTimeOffset.Now;
-            Products = new List<InquiryProductLine>();
+            InquiryLines = new List<InquiryProductLine>();
             Customer = customer;
         }
 
         public void AddInquiryLine(Product product, int amount)
         {
             var inquiryLine = new InquiryProductLine(product, amount);
-            Products.Add(inquiryLine);
+            InquiryLines.Add(inquiryLine);
+        }
+        
+        public decimal GetTotalPrice()
+        {
+            decimal total = 0;
+            foreach (var line in InquiryLines)
+            {
+                total += (line.Product.GetSellPrice() * line.Amount);
+            }
+            return total;
         }
     }
 }

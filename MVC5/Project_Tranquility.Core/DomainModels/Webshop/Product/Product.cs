@@ -8,20 +8,25 @@ namespace Project_Tranquility.Core.DomainModels.Webshop
 {
     public class Product : BaseEntity
     {
+        public virtual string ProductNumber { get; private set; }
         public virtual string Name { get; private set; }
         public virtual string Description { get; private set; }
-        public virtual string ProductNumber { get; private set; }
         public virtual string Model { get; private set; }
+
         public virtual int NumberInStock { get; private set; }
         public virtual string LocationInWareHouse { get; private set; }
+
         public virtual decimal PurchasePrice { get; private set; }
-        public virtual decimal SellPrice { get; private set; }
-        public virtual decimal VAT { get; private set; }
-        public virtual decimal Weight { get; private set; }
+        public virtual decimal ContributionRatio { get; private set; }
+
         public virtual string Image { get; private set; }
         public virtual ICollection<Color> Colors { get; private set; }
         public virtual ICollection<Material> Materials { get; private set; }
-        public virtual Manufacturer Manufacturer { get; private set; }
+        public virtual Dimensions Dimensions { get; private set; }
+        public virtual float Weight { get; private set; }
+        public virtual Supplier Supplier { get; private set; }
+
+        public virtual Subcategory SubCategory { get; private set; }
 
         protected Product() { }
 
@@ -35,10 +40,10 @@ namespace Project_Tranquility.Core.DomainModels.Webshop
             Materials = new List<Material>();
         }
 
-        public void AddColor(string colorName, decimal percentage)
+        public void AddColor(string colorName, float percentage)
         {
             var colorToAdd = new Color(colorName, percentage);
-            Colors.Add(colorToAdd);
+            AddColor(colorToAdd);
         }
 
         public void AddColor(Color color)
@@ -46,15 +51,21 @@ namespace Project_Tranquility.Core.DomainModels.Webshop
             Colors.Add(color);
         }
 
-        public void AddMaterial(string materialName, decimal percentage)
+        public void AddMaterial(string materialName, float percentage)
         {
             var materialToAdd = new Material(materialName, percentage);
-            Materials.Add(materialToAdd);
+            AddMaterial(materialToAdd);
         }
 
         public void AddMaterial(Material material)
         {
             Materials.Add(material);
+        }
+
+        public decimal GetSellPrice()
+        {
+            var price = PurchasePrice * ContributionRatio * Constants.VAT;
+            return price;
         }
     }
 }

@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace Project_Tranquility.Core.DomainModels.Webshop
 {
-    //Perhabs should be named Supplier?
-    public class Manufacturer : BaseEntity
+    public class Subcategory : BaseEntity
     {
         public virtual string Name { get; private set; }
 
-        protected Manufacturer() { }
+        protected Subcategory() { }
 
-        public Manufacturer(string name)
+        public Subcategory(string name)
         {
             Name = name;
         }

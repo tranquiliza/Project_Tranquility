@@ -15,21 +15,8 @@ namespace Project_Tranquility.Core.DomainModels.Webshop
 
         public InquiryProductLine(Product product, int amount)
         {
-            if (IsValidInput(product, amount))
-            {
-                Product = product;
-                Amount = amount;
-            }
-            throw new ArgumentException("Invalid product or amount given!");
-        }
-
-        private bool IsValidInput(Product product, int amount)
-        {
-            if (product != null && amount != 0)
-            {
-                return true;
-            }
-            return false;
+            Product = product;
+            Amount = amount;
         }
 
         public void IncrementAmount()

@@ -9,17 +9,17 @@ namespace Project_Tranquility.Core.DomainModels.Webshop
     public class Color : BaseEntity
     {
         public virtual string Name { get; private set; }
-        public virtual decimal Percentage { get; private set; }
+        public virtual float Percentage { get; private set; }
 
         protected Color() { }
 
-        public Color(string name, decimal percentage)
+        public Color(string name, float percentage)
         {
             Name = name;
             Percentage = percentage;
         }
 
-        public void ChangePercentage(decimal newPercentage)
+        public void ChangePercentage(float newPercentage)
         {
             Percentage = newPercentage;
         }
