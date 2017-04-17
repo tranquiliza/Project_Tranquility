@@ -11,7 +11,7 @@
 
 <body>
     <main>
-        @Html.Partial("_Navigation")
+        @Html.Partial("_AdminNavigation")
         <div class="container">
             @RenderBody()
         </div>
@@ -23,7 +23,6 @@
     <script>
         $('#sideMenu').sideNav();
 
-        //Fix for checkboxes in Materialize with MVC5
         $(":checkbox").each(function () {
             $(this).nextAll("label").before($(this))
         })

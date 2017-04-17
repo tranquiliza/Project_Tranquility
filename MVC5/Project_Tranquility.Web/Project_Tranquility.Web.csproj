@@ -191,6 +191,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\TestController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -428,7 +430,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Logs\" />
+    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Views\Base\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\lib\materialize\test\html\" />
@@ -593,6 +595,11 @@
     <Content Include="wwwroot\lib\materialize\templates\masonry-template\LICENSE" />
     <Content Include="wwwroot\lib\materialize\templates\parallax-template\LICENSE" />
     <Content Include="wwwroot\lib\materialize\templates\starter-template\LICENSE" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminNavigation.cshtml" />
+    <Content Include="Areas\Admin\Views\Test\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

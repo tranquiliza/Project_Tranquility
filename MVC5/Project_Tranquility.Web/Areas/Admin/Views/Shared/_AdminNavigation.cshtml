@@ -4,9 +4,9 @@
     <ul id="loginDropdown" class="dropdown-content">
         @if (Request.IsAuthenticated)
         {
-            <li><a href="@Url.Action("Index", "Manage")">User Profile</a></li>
+            <li><a href="@Url.Action("Index", "Manage", new { area = "" })">User Profile</a></li>
             <li>
-                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "" }))
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "", area = "" }))
                 {
                     @Html.AntiForgeryToken()
                 }
@@ -16,16 +16,16 @@
         else
         {
             <li>
-                @Html.ActionLink("Register", "Register", "Account")
+                @Html.ActionLink("Register", "Register", "Account", new { area = "" })
             </li>
             <li>
-                @Html.ActionLink("Login", "Login", "Account")
+                @Html.ActionLink("Login", "Login", "Account", new { area = "" })
             </li>
         }
     </ul>
 
     <div class="nav-wrapper container">
-        <a style="margin-left:80px;" id="logo-container" href="@Url.Action("Index", "Home")" class="brand-logo">Project Tranquility</a>
+        <a style="margin-left:80px;" id="logo-container" href="@Url.Action("Index", "Home", new { area = "" })" class="brand-logo">Project Tranquility</a>
         <ul class="left hide-on-med-and-down">
             <li><a id="sideMenu" data-activates="slide-out"><i class="material-icons">menu</i></a></li>
         </ul>
@@ -69,14 +69,14 @@
         {
             <li><div class="divider"></div></li>
             <li><a class="subheader">Admin Functions</a></li>
-            <li><a class="waves-effect" href="@Url.Action("Index", "UsersAdmin")">Users</a></li>
+            <li><a class="waves-effect" href="@Url.Action("Index", "UsersAdmin", new { area = "" })">Users</a></li>
         }
 
         if (User.IsInRole("Developer"))
         {
             <li><div class="divider"></div></li>
             <li><a class="subheader">Developer Functions</a></li>
-            <li><a class="waves-effect" href="@Url.Action("Index", "RolesAdmin")">Roles</a></li>
+            <li><a class="waves-effect" href="@Url.Action("Index", "RolesAdmin", new { area = "" })">Roles</a></li>
         }
     }
 </ul>
