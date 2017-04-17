@@ -36,7 +36,7 @@
                         <div class="input-field col s12">
                             @foreach (var item in (SelectList)ViewBag.RoleId)
                             {
-                                <input id="@item.Value" type="checkbox" name="SelectedRole" value="@item.Value" checked="@item.Selected" />
+                                <input id="@item.Value" type="checkbox" name="SelectedRoles" value="@item.Value" checked="@item.Selected" />
                                 <label for="@item.Value">@item.Value</label>
                                 <br />
                             }

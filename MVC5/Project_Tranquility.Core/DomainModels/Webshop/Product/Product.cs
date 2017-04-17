@@ -24,6 +24,7 @@ namespace Project_Tranquility.Core.DomainModels.Webshop
         public virtual ICollection<Material> Materials { get; private set; }
         public virtual Dimensions Dimensions { get; private set; }
         public virtual float Weight { get; private set; }
+
         public virtual Supplier Supplier { get; private set; }
 
         public virtual Subcategory SubCategory { get; private set; }
