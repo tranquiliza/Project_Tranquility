@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\OrderBy.cs" />
+    <Compile Include="DomainExceptions\MyTestException.cs" />
     <Compile Include="DomainModels\BaseEntity.cs" />
     <Compile Include="DomainModels\Identity\ApplicationAuthenticationDescription.cs" />
     <Compile Include="DomainModels\Identity\ApplicationExternalLoginInfo.cs" />

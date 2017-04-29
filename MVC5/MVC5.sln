@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.3
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2C15B226-C94B-448B-828D-3A06B7A11744}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_Tranquility.Web.Tests", "Project_Tranquility.Web.Tests\Project_Tranquility.Web.Tests.csproj", "{1F2BB655-ADE3-4343-9B8C-5448451A51BB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_Tranquility.Infrastructure", "Project_Tranquility.Infrastructure\Project_Tranquility.Infrastructure.csproj", "{0C6B09FC-FA1A-4E9C-AEB6-7126172A701E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_Tranquility.Core.Test", "Project_Tranquility.Core.Test\Project_Tranquility.Core.Test.csproj", "{06964C14-6E22-4B56-98EE-C3E2B0CD2D8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{0C6B09FC-FA1A-4E9C-AEB6-7126172A701E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C6B09FC-FA1A-4E9C-AEB6-7126172A701E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C6B09FC-FA1A-4E9C-AEB6-7126172A701E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06964C14-6E22-4B56-98EE-C3E2B0CD2D8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06964C14-6E22-4B56-98EE-C3E2B0CD2D8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06964C14-6E22-4B56-98EE-C3E2B0CD2D8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06964C14-6E22-4B56-98EE-C3E2B0CD2D8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,5 +68,6 @@ Global
 		{EBE6719F-2481-4D6F-998A-7655DEF009A3} = {63AAE51C-C3E9-4023-9837-9BEC34011D5B}
 		{1F2BB655-ADE3-4343-9B8C-5448451A51BB} = {63AAE51C-C3E9-4023-9837-9BEC34011D5B}
 		{0C6B09FC-FA1A-4E9C-AEB6-7126172A701E} = {2C15B226-C94B-448B-828D-3A06B7A11744}
+		{06964C14-6E22-4B56-98EE-C3E2B0CD2D8C} = {0FCFAA4C-F70D-4B51-85A6-C14716447E47}
 	EndGlobalSection
 EndGlobal

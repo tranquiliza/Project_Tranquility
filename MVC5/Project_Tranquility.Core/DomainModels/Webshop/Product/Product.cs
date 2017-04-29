@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_Tranquility.Core.DomainExceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,7 @@ namespace Project_Tranquility.Core.DomainModels.Webshop
 
         public virtual Subcategory SubCategory { get; private set; }
 
-        protected Product() { }
+        private Product() { }
 
         public Product(string name, string description, string productNumber, decimal purchasePrice)
         {
@@ -47,9 +48,25 @@ namespace Project_Tranquility.Core.DomainModels.Webshop
             AddColor(colorToAdd);
         }
 
-        public void AddColor(Color color)
+        private void AddColor(Color color)
         {
+            if (AddingTooMuchColor(color.Percentage)) throw new BasicDomainException();
             Colors.Add(color);
+        }
+
+        private bool AddingTooMuchColor(float percent)
+        {
+            return GetCurrentColorPercent() + percent > 100;
+        }
+
+        private float GetCurrentColorPercent()
+        {
+            float total = 0;
+            foreach (Color color in Colors)
+            {
+                total += color.Percentage;
+            }
+            return total;
         }
 
         public void AddMaterial(string materialName, float percentage)
@@ -58,7 +75,7 @@ namespace Project_Tranquility.Core.DomainModels.Webshop
             AddMaterial(materialToAdd);
         }
 
-        public void AddMaterial(Material material)
+        private void AddMaterial(Material material)
         {
             Materials.Add(material);
         }
