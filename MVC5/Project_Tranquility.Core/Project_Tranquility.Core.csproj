@@ -42,8 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\OrderBy.cs" />
+    <Compile Include="DomainExceptions\MyTestException.cs" />
     <Compile Include="DomainModels\BaseEntity.cs" />
-    <Compile Include="DomainModels\Department.cs" />
     <Compile Include="DomainModels\Identity\ApplicationAuthenticationDescription.cs" />
     <Compile Include="DomainModels\Identity\ApplicationExternalLoginInfo.cs" />
     <Compile Include="DomainModels\Identity\ApplicationIdentityResult.cs" />
@@ -54,10 +54,20 @@
     <Compile Include="DomainModels\Identity\ApplicationUserLoginInfo.cs" />
     <Compile Include="DomainModels\Identity\ApplicationUserRole.cs" />
     <Compile Include="DomainModels\Identity\AppUser.cs" />
-    <Compile Include="DomainModels\MaintainanceTask.cs" />
-    <Compile Include="DomainModels\PaginatedList.cs" />
+    <Compile Include="Data\PaginatedList.cs" />
     <Compile Include="Data\IUnitOfWork.cs" />
-    <Compile Include="DomainModels\Staff.cs" />
+    <Compile Include="DomainModels\Webshop\Product\Category.cs" />
+    <Compile Include="DomainModels\Constants.cs" />
+    <Compile Include="DomainModels\Webshop\Product\Color.cs" />
+    <Compile Include="DomainModels\Webshop\Stakeholders\Customer.cs" />
+    <Compile Include="DomainModels\Webshop\Inquiry\Inquiry.cs" />
+    <Compile Include="DomainModels\Webshop\Inquiry\InquiryProductLine.cs" />
+    <Compile Include="DomainModels\Webshop\Product\Dimensions.cs" />
+    <Compile Include="DomainModels\Webshop\Product\Material.cs" />
+    <Compile Include="DomainModels\Webshop\Product\Product.cs" />
+    <Compile Include="DomainModels\Webshop\Product\Subcategory.cs" />
+    <Compile Include="DomainModels\Webshop\Stakeholders\Supplier.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\QueryableExtensions.cs" />
     <Compile Include="Identity\IApplicationRoleManager.cs" />

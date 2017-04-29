@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Project_Tranquility.Core.DomainModels.Webshop;
 
 namespace Project_Tranquility.Data.Identity.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationIdentityUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationIdentityUser : IdentityUser<int, ApplicationIdentityUserLogin, ApplicationIdentityUserRole, ApplicationIdentityUserClaim>
     {
+        public virtual Customer CustomerInfo { get; set; }
     }
     
     public class ApplicationIdentityRole : IdentityRole<int, ApplicationIdentityUserRole>

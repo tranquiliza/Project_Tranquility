@@ -29,9 +29,9 @@ namespace Project_Tranquility.Data.Identity
             {
                 RequiredLength = 6,
                 RequireNonLetterOrDigit = false,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true
+                RequireDigit = false,
+                RequireLowercase = false,
+                RequireUppercase = false
             };
 
             manager.UserLockoutEnabledByDefault = true;

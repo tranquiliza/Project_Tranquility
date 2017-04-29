@@ -191,11 +191,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\TestController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ProjectManagerController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
@@ -221,7 +222,6 @@
     <Compile Include="Models\ManageViewModels\ManageLoginsViewModel.cs" />
     <Compile Include="Models\ManageViewModels\SetPasswordViewModel.cs" />
     <Compile Include="Models\ManageViewModels\VerifyPhoneNumberViewModel.cs" />
-    <Compile Include="Models\ProjectManagerViewModels\IndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -430,6 +430,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Views\Base\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\lib\materialize\test\html\" />
@@ -493,7 +494,6 @@
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_SideNavigation.cshtml" />
-    <Content Include="Views\ProjectManager\Index.cshtml" />
     <Content Include="wwwroot\lib\jquery\.bower.json" />
     <Content Include="wwwroot\lib\jquery\bower.json" />
     <Content Include="wwwroot\lib\jquery\dist\jquery.min.map" />
@@ -595,9 +595,11 @@
     <Content Include="wwwroot\lib\materialize\templates\masonry-template\LICENSE" />
     <Content Include="wwwroot\lib\materialize\templates\parallax-template\LICENSE" />
     <Content Include="wwwroot\lib\materialize\templates\starter-template\LICENSE" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminNavigation.cshtml" />
+    <Content Include="Areas\Admin\Views\Test\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

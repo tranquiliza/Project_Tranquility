@@ -74,6 +74,10 @@ namespace Project_Tranquility.Data.Extensions
                     UserId = login.UserId
                 });
             }
+
+            //Custom Values
+            applicationIdentityUser.CustomerInfo = appUser.CustomerInfo;
+
             return applicationIdentityUser;
         }
 
@@ -132,6 +136,10 @@ namespace Project_Tranquility.Data.Extensions
                     UserId = login.UserId
                 });
             }
+
+            //Custom Values
+            appUser.CustomerInfo = applicationIdentityUser.CustomerInfo;
+
             return appUser;
         }
 
