@@ -16,19 +16,20 @@ namespace Project_Tranquility.Core.Test.DomainModels.Webshop
         public void Throw_If_Colors_Exceed_100_Percent()
         {
             //Arrange
-            void addTooMuchColer()
-            {
-                var product = CreateProductWith90PercentColors();
-                var colorName = "TwentyPercent";
-                var percent = 20;
-                product.AddColor(colorName, percent);
-            }
-
+            
             //Act
             var delegateUnderTest = new TestDelegate(addTooMuchColer);
             
             //Assert
             Assert.Throws<BasicDomainException>(delegateUnderTest);
+        }
+
+        private void addTooMuchColer()
+        {
+            var product = CreateProductWith90PercentColors();
+            var colorName = "TwentyPercent";
+            var percent = 20;
+            product.AddColor(colorName, percent);
         }
 
         private Product CreateProductWith90PercentColors()
