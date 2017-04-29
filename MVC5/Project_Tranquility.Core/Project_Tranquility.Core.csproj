@@ -67,6 +67,7 @@
     <Compile Include="DomainModels\Webshop\Product\Product.cs" />
     <Compile Include="DomainModels\Webshop\Product\Subcategory.cs" />
     <Compile Include="DomainModels\Webshop\Stakeholders\Supplier.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\QueryableExtensions.cs" />
     <Compile Include="Identity\IApplicationRoleManager.cs" />
