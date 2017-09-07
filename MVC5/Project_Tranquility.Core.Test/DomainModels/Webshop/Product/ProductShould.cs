@@ -1,11 +1,7 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Project_Tranquility.Core.DomainModels.Webshop;
 using Project_Tranquility.Core.DomainExceptions;
+using Project_Tranquility.Core.DomainModels.Webshop;
+using System.Linq;
 
 namespace Project_Tranquility.Core.Test.DomainModels.Webshop
 {
@@ -16,19 +12,20 @@ namespace Project_Tranquility.Core.Test.DomainModels.Webshop
         public void Throw_If_Colors_Exceed_100_Percent()
         {
             //Arrange
-            void addTooMuchColer()
-            {
-                var product = CreateProductWith90PercentColors();
-                var colorName = "TwentyPercent";
-                var percent = 20;
-                product.AddColor(colorName, percent);
-            }
+            var testDelegate = new TestDelegate(AddTooMuchColor);
 
             //Act
-            var delegateUnderTest = new TestDelegate(addTooMuchColer);
             
             //Assert
-            Assert.Throws<BasicDomainException>(delegateUnderTest);
+            Assert.Throws<BasicDomainException>(testDelegate);
+        }
+
+        private void AddTooMuchColor()
+        {
+            var product = CreateProductWith90PercentColors();
+            var colorName = "TwentyPercent";
+            var percent = 20;
+            product.AddColor(colorName, percent);
         }
 
         private Product CreateProductWith90PercentColors()
